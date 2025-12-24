@@ -49,6 +49,29 @@ const MorphingText = ({ text }) => {
     return <>{displayText}</>;
 };
 
+const TypingText = ({ text }) => {
+    const [displayedText, setDisplayedText] = useState("");
+
+    useEffect(() => {
+        let i = 0;
+        const timer = setInterval(() => {
+            if (i < text.length) {
+                setDisplayedText(text.slice(0, i + 1));
+                i++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 100);
+        return () => clearInterval(timer);
+    }, [text]);
+
+    return (
+        <span className="inline-block border-r-2 border-bg-dark pr-1 animate-pulse">
+            {displayedText}
+        </span>
+    );
+};
+
 
 const Header = () => {
     const headerRef = useRef(null);
@@ -72,6 +95,9 @@ const Header = () => {
                         zIndex: 5
                     }}
                 >
+                    <div className="mb-6 text-bg-dark font-bold tracking-[0.4em] text-xs md:text-sm lg:text-base uppercase text-center">
+                        <TypingText text="FULLSTACK WEB3 DEVELOPER" />
+                    </div>
                     <h1 className="text-[22vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap -translate-y-12">
                         <MorphingText text="0HEHAEBIB1" />
                     </h1>
