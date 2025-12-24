@@ -2,14 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import {
     ArrowUpRight,
-    Instagram,
-    Youtube,
     Twitter,
     ChevronLeft,
     ChevronRight,
     ArrowRight,
     Github,
-    Linkedin,
     Mail
 } from 'lucide-react';
 const MorphingText = ({ text }) => {
@@ -110,8 +107,8 @@ const Header = () => {
                         <a href="mailto:elshaddaioheha@gmail.com" className="w-10 h-10 rounded-full border border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
                             <Mail size={20} />
                         </a>
-                        <a href="#" className="w-10 h-10 rounded-full border border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
-                            <Linkedin size={20} />
+                        <a href="https://x.com/0hehaebib1" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
+                            <Twitter size={20} />
                         </a>
                     </div>
                 </div>
@@ -398,10 +395,7 @@ const Contact = () => {
                                         <a href="https://github.com/elshaddaioheha" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border-2 border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
                                             <Github size={24} />
                                         </a>
-                                        <a href="#" className="w-12 h-12 rounded-full border-2 border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
-                                            <Linkedin size={24} />
-                                        </a>
-                                        <a href="#" className="w-12 h-12 rounded-full border-2 border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
+                                        <a href="https://x.com/0hehaebib1" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border-2 border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
                                             <Twitter size={24} />
                                         </a>
                                     </div>
