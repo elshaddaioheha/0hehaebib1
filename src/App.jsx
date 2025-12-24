@@ -277,7 +277,7 @@ const Works = () => {
             title: 'SwenAutos',
             desc: 'Blockchain-Backed Automotive Marketplace leveraging blockchain immutability for verifiable chain of custody using Hardhat and Solidity.',
             featured: true,
-            link: 'https://swenautos.vercel.app'
+            link: 'https://swen-autos.vercel.app'
         },
         {
             year: 'LIVE',
