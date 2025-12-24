@@ -408,11 +408,12 @@ const Contact = () => {
                                 </div>
                             </div>
                             <div className="flex justify-center md:justify-end">
-                                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-bg-dark/20 bg-bg-dark flex items-center justify-center">
-                                    <div className="text-accent text-center p-8">
-                                        <div className="text-4xl font-display mb-2">CS50</div>
-                                        <div className="text-xs uppercase tracking-widest font-bold opacity-60">Harvard University</div>
-                                    </div>
+                                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-bg-dark/20 bg-bg-dark">
+                                    <img
+                                        src="/profile.png"
+                                        alt="Elshaddai Oheha"
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
                             </div>
                         </div>
