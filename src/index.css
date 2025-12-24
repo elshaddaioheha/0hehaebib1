@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg-dark: #1C1B21;
+    --accent: #71ADDD;
+    --text-light: #71ADDD;
+    --text-dim: #32609A;
+    --font-display: 'Anton', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+.accent-pattern {
+    background-color: var(--accent);
+    background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgba(0, 0, 0, 0.03) 15px, rgba(0, 0, 0, 0.03) 16px);
+}
+
+.btn-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid currentColor;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-circle:hover {
+    background: var(--text-light);
+    color: var(--bg-dark);
+}
+
+.btn-pill {
+    padding: 0.75rem 2rem;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.btn-pill:hover {
+    background: currentColor;
+    color: var(--bg-dark);
+}
+
+.work-item {
+    padding: 4rem 0;
+    border-bottom: 1px solid rgba(113, 173, 221, 0.1);
+}
+
+.work-item.featured {
+    background-color: var(--accent);
+    color: var(--bg-dark);
+    margin: 1rem 0;
+    padding: 4rem;
+    border-radius: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .work-item.featured {
+        margin: 1rem -4rem;
+    }
+}
+
+.work-item.featured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgba(0, 0, 0, 0.03) 15px, rgba(0, 0, 0, 0.03) 16px);
+    pointer-events: none;
+}
+
+.gallery-img {
+    border-radius: 40px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.02);
+}
+
+/* Custom Utilities */
+.text-outline {
+    -webkit-text-stroke: 1px currentColor;
+    color: transparent;
+}
+
+/* Rotating Gear Badge */
+.gear-badge {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gear-badge svg {
+    width: 100%;
+    height: 100%;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
