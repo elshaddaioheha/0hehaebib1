@@ -7,6 +7,7 @@ import {
     ChevronRight,
     ArrowRight,
     Github,
+    Instagram,
     Mail
 } from 'lucide-react';
 const MorphingText = ({ text }) => {
@@ -109,6 +110,9 @@ const Header = () => {
                         </a>
                         <a href="https://x.com/0hehaebib1" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
                             <Twitter size={20} />
+                        </a>
+                        <a href="https://instagram.com/0hehaebib1" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
+                            <Instagram size={20} />
                         </a>
                     </div>
                 </div>
@@ -397,6 +401,9 @@ const Contact = () => {
                                         </a>
                                         <a href="https://x.com/0hehaebib1" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border-2 border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
                                             <Twitter size={24} />
+                                        </a>
+                                        <a href="https://instagram.com/0hehaebib1" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border-2 border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
+                                            <Instagram size={24} />
                                         </a>
                                     </div>
                                 </div>
