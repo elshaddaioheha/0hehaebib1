@@ -87,6 +87,10 @@ const Header = () => {
     return (
         <header ref={headerRef} className="p-4 md:p-6 min-h-screen flex flex-col">
             <div className="flex-1 accent-pattern rounded-[40px] md:rounded-[80px] relative overflow-hidden flex flex-col justify-between p-8 md:p-16">
+                <div className="relative z-20 text-bg-dark font-bold tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm uppercase text-center pt-2 md:pt-4">
+                    <TypingText text="FULLSTACK WEB3 DEVELOPER" />
+                </div>
+
                 <motion.div
                     className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none select-none overflow-hidden"
                     style={{
@@ -95,9 +99,6 @@ const Header = () => {
                         zIndex: 5
                     }}
                 >
-                    <div className="mb-6 text-bg-dark font-bold tracking-[0.4em] text-xs md:text-sm lg:text-base uppercase text-center">
-                        <TypingText text="FULLSTACK WEB3 DEVELOPER" />
-                    </div>
                     <h1 className="text-[22vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap -translate-y-12">
                         <MorphingText text="0HEHAEBIB1" />
                     </h1>
