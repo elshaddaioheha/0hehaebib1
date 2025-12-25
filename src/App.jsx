@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import {
     ArrowUpRight,
     Twitter,
@@ -473,6 +474,7 @@ export default function App() {
             <Gallery />
             <Contact />
             <Footer />
+            <Analytics />
         </div>
     );
 }
