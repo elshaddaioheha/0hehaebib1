@@ -88,7 +88,7 @@ const Header = () => {
         <header ref={headerRef} className="p-4 md:p-6 min-h-screen flex flex-col">
             <div className="flex-1 accent-pattern rounded-[40px] md:rounded-[80px] relative overflow-hidden flex flex-col justify-between p-8 md:p-16">
                 <div className="relative z-20 text-bg-dark font-bold tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm uppercase text-center pt-2 md:pt-4">
-                    <TypingText text="FULLSTACK WEB3 DEVELOPER" />
+                    <TypingText text="ARCHITECTING SCALABLE DIGITAL INFRASTRUCTURE" />
                 </div>
 
                 <motion.div
@@ -99,13 +99,13 @@ const Header = () => {
                         zIndex: 5
                     }}
                 >
-                    <h1 className="text-[22vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap -translate-y-12">
+                    <h1 className="text-[18vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap -translate-y-12">
                         <MorphingText text="0HEHAEBIB1" />
                     </h1>
-                    <h1 className="text-[22vw] font-display leading-[0.7] text-bg-dark whitespace-nowrap">
+                    <h1 className="text-[18vw] font-display leading-[0.7] text-bg-dark whitespace-nowrap">
                         <MorphingText text="0HEHAEBIB1" />
                     </h1>
-                    <h1 className="text-[22vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap translate-y-12">
+                    <h1 className="text-[18vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap translate-y-12">
                         <MorphingText text="0HEHAEBIB1" />
                     </h1>
                 </motion.div>
@@ -183,18 +183,34 @@ const About = () => {
                     </div>
 
                     <div className="md:w-2/3 flex flex-col gap-8 md:pl-20">
-                        <p className="text-xl md:text-2xl text-accent leading-[1.4] font-medium opacity-90">
-                            Versatile and technically rigorous Software Engineer with over 4 years of version control experience. Specializes in building scalable full-stack applications using the MERN Stack, Next.js, and Web3 technologies.
+                        <p className="text-xl md:text-3xl text-accent leading-[1.3] font-medium">
+                            I build <span className="text-white">production-grade</span> systems that bridge the gap between complex backend logic and intuitive user experiences.
                         </p>
-                        <p className="text-lg text-accent/70 leading-relaxed">
-                            Currently driving backend infrastructure for a biotech startup and leading digital strategy for non-profit initiatives. Backed by a strong foundation in Data Analytics (Google) and Computer Science (Harvard CS50), with a proven ability to deliver production-grade solutions for the African and global market.
+                        <p className="text-lg text-accent/80 leading-relaxed">
+                            Currently driving backend infrastructure for a biotech startup and leading digital strategy for non-profit initiatives. Backed by a strong foundation in Data Analytics (Google) and Computer Science (Harvard CS50), I focus on delivering scalable, secure, and user-centric solutions.
                         </p>
-                        <div className="flex flex-wrap gap-4 mt-4">
-                            {['MERN Stack', 'Next.js', 'Web3', 'Solidity', 'Docker', 'TypeScript'].map(skill => (
-                                <span key={skill} className="px-4 py-2 border border-accent/20 rounded-full text-xs font-bold uppercase tracking-widest text-accent/80">
-                                    {skill}
-                                </span>
-                            ))}
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-4">
+                            <div>
+                                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-4">Core Stack</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {['React/Next.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB', 'Docker'].map(skill => (
+                                        <span key={skill} className="px-3 py-1.5 bg-accent/5 border border-accent/20 rounded-md text-[10px] font-bold uppercase tracking-wider text-accent">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-4">Web3 & Tools</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {['Solidity', 'Hardhat', 'Ethers.js', 'AWS', 'CI/CD', 'Supabase'].map(skill => (
+                                        <span key={skill} className="px-3 py-1.5 bg-accent/5 border border-accent/20 rounded-md text-[10px] font-bold uppercase tracking-wider text-accent/80">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
@@ -268,22 +284,22 @@ const Works = () => {
 
     const projects = [
         {
-            year: 'LIVE',
+            year: '2025',
             title: 'Agbejo',
-            desc: 'Decentralized Escrow Platform. Implemented a trustless multi-signature arbitration system using Next.js, Hedera Hashgraph, and Solidity.',
+            desc: 'Solving trust issues in P2P commerce via a decentralized multi-signature arbitration system. Built on Hedera Hashgraph for low-latency, high-security transaction finality.',
             link: 'https://agbejo.vercel.app'
         },
         {
-            year: 'LIVE',
+            year: 'CORE',
             title: 'SwenAutos',
-            desc: 'Blockchain-Backed Automotive Marketplace leveraging blockchain immutability for verifiable chain of custody using Hardhat and Solidity.',
+            desc: 'Eliminating vehicle fraud by leveraging blockchain immutability for verifiable chain of custody. Features a robust backend for real-time telemetry and ownership verification.',
             featured: true,
             link: 'https://swen-autos.vercel.app'
         },
         {
-            year: 'LIVE',
+            year: 'HACK',
             title: 'Àyàn Collection',
-            desc: 'Programmatic NFT Minting script developed for the Hedera Africa Hackathon. Authored scripts for automated distribution of digital assets.',
+            desc: 'Addressing mass-distribution challenges for digital assets. Developed a programmatic minting engine for the Hedera Africa Hackathon to automate asset deployment.',
             link: 'https://ayan-collection-nextjs.vercel.app/'
         },
     ];
@@ -365,25 +381,25 @@ const Gallery = () => {
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                     transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
                 >
-                    <div className="group aspect-video rounded-[40px] md:rounded-[60px] overflow-hidden border border-accent/10 relative">
+                    <div className="group aspect-video rounded-[40px] md:rounded-[60px] overflow-hidden border border-accent/10 relative gallery-mockup">
                         <img src="/gallery-swenautos.png" className="gallery-img" alt="SwenAutos Platform" />
                         <div className="absolute inset-0 bg-bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                             <span className="text-accent font-display text-2xl">SwenAutos</span>
                         </div>
                     </div>
-                    <div className="group aspect-video rounded-[40px] md:rounded-[60px] overflow-hidden border border-accent/10 relative">
+                    <div className="group aspect-video rounded-[40px] md:rounded-[60px] overflow-hidden border border-accent/10 relative gallery-mockup">
                         <img src="/gallery-agbejo.png" className="gallery-img" alt="Agbejo Escrow" />
                         <div className="absolute inset-0 bg-bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                             <span className="text-accent font-display text-2xl">Agbejo</span>
                         </div>
                     </div>
-                    <div className="group aspect-video rounded-[40px] md:rounded-[60px] overflow-hidden border border-accent/10 relative">
+                    <div className="group aspect-video rounded-[40px] md:rounded-[60px] overflow-hidden border border-accent/10 relative gallery-mockup">
                         <img src="/gallery-oloja.png" className="gallery-img" alt="Oloja Foundation" />
                         <div className="absolute inset-0 bg-bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                             <span className="text-accent font-display text-2xl">Oloja Foundation</span>
                         </div>
                     </div>
-                    <div className="group aspect-video rounded-[40px] md:rounded-[60px] overflow-hidden border border-accent/10 relative">
+                    <div className="group aspect-video rounded-[40px] md:rounded-[60px] overflow-hidden border border-accent/10 relative gallery-mockup">
                         <img src="/gallery-ayan.png" className="gallery-img" alt="Àyàn Collection" />
                         <div className="absolute inset-0 bg-bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                             <span className="text-accent font-display text-2xl">Àyàn Collection</span>
@@ -417,20 +433,25 @@ const Contact = () => {
                                 <p className="text-bg-dark text-xl md:text-2xl font-medium leading-[1.4] mb-8">
                                     I am currently available for new opportunities. Let's build the next generation of digital infrastructure together.
                                 </p>
-                                <div className="flex flex-col gap-6">
-                                    <a href="mailto:elshaddaioheha@gmail.com" className="flex items-center gap-3 text-bg-dark font-bold text-lg hover:underline">
-                                        <Mail size={24} />
+                                <div className="flex flex-col gap-8">
+                                    <a href="mailto:elshaddaioheha@gmail.com" className="group flex items-center gap-4 text-bg-dark font-bold text-2xl md:text-4xl hover:opacity-70 transition-opacity break-all">
+                                        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-bg-dark flex items-center justify-center shrink-0">
+                                            <Mail className="w-6 h-6 md:w-8 md:h-8" />
+                                        </div>
                                         elshaddaioheha@gmail.com
                                     </a>
-                                    <div className="flex gap-4">
-                                        <a href="https://github.com/elshaddaioheha" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border-2 border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
-                                            <Github size={24} />
+                                    <div className="flex flex-wrap gap-6 mt-4">
+                                        <a href="https://github.com/elshaddaioheha" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-bg-dark font-bold text-lg hover:underline decoration-2 underline-offset-4">
+                                            <Github size={28} />
+                                            GitHub
                                         </a>
-                                        <a href="https://x.com/0hehaebib1" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border-2 border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
-                                            <Twitter size={24} />
+                                        <a href="https://linkedin.com/in/ojeka-ebibi" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-bg-dark font-bold text-lg hover:underline decoration-2 underline-offset-4">
+                                            <ArrowUpRight size={28} />
+                                            LinkedIn
                                         </a>
-                                        <a href="https://instagram.com/0hehaebib1" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border-2 border-bg-dark flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent transition-colors">
-                                            <Instagram size={24} />
+                                        <a href="https://x.com/0hehaebib1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-bg-dark font-bold text-lg hover:underline decoration-2 underline-offset-4">
+                                            <Twitter size={28} />
+                                            Twitter
                                         </a>
                                     </div>
                                 </div>
