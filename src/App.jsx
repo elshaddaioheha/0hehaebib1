@@ -184,10 +184,10 @@ const About = () => {
                     </div>
 
                     <div className="md:w-2/3 flex flex-col gap-8 md:pl-20">
-                        <p className="text-xl md:text-3xl text-accent leading-[1.3] font-medium">
+                        <p className="text-xl md:text-3xl text-accent leading-[1.3] font-medium max-w-[55ch]">
                             I build <span className="text-white">production-grade</span> systems that bridge the gap between complex backend logic and intuitive user experiences.
                         </p>
-                        <p className="text-lg text-accent/80 leading-relaxed">
+                        <p className="text-lg text-white/80 leading-relaxed max-w-[60ch]">
                             Currently driving backend infrastructure for a biotech startup and leading digital strategy for non-profit initiatives. Backed by a strong foundation in Data Analytics (Google) and Computer Science (Harvard CS50), I focus on delivering scalable, secure, and user-centric solutions.
                         </p>
 
@@ -287,21 +287,24 @@ const Works = () => {
         {
             year: '2025',
             title: 'Agbejo',
-            desc: 'Solving trust issues in P2P commerce via a decentralized multi-signature arbitration system. Built on Hedera Hashgraph for low-latency, high-security transaction finality.',
-            link: 'https://agbejo.vercel.app'
+            desc: 'A secure P2P payment settlement layer that eliminates intermediary fees. Leveraged Hedera\'s high-throughput consensus to achieve a 99% cost reduction vs. traditional rails.',
+            link: 'https://agbejo.vercel.app',
+            demo: '#'
         },
         {
             year: 'CORE',
             title: 'SwenAutos',
-            desc: 'Eliminating vehicle fraud by leveraging blockchain immutability for verifiable chain of custody. Features a robust backend for real-time telemetry and ownership verification.',
+            desc: 'A decentralized automotive registry designed to stop vehicle identity fraud. Implemented an immutable chain-of-custody that reduced verification time from days to seconds.',
             featured: true,
-            link: 'https://swen-autos.vercel.app'
+            link: 'https://swen-autos.vercel.app',
+            demo: '#'
         },
         {
             year: 'HACK',
             title: 'Àyàn Collection',
-            desc: 'Addressing mass-distribution challenges for digital assets. Developed a programmatic minting engine for the Hedera Africa Hackathon to automate asset deployment.',
-            link: 'https://ayan-collection-nextjs.vercel.app/'
+            desc: 'Automating high-volume digital asset distribution. Developed a programmatic minting engine that successfully deployed 1,000+ assets in under 60 seconds.',
+            link: 'https://ayan-collection-nextjs.vercel.app/',
+            demo: '#'
         },
     ];
 
@@ -339,10 +342,15 @@ const Works = () => {
                                     <h4 className="text-3xl md:text-5xl font-display mb-3 group-hover:translate-x-2 transition-transform duration-300">{p.title}</h4>
                                     <p className="text-sm md:text-base opacity-70 leading-relaxed max-w-xl">{p.desc}</p>
                                 </div>
-                                <div className="md:col-span-3 flex justify-end">
-                                    <a href={p.link} target="_blank" rel="noopener noreferrer" className={`btn-pill ${p.featured ? 'bg-bg-dark text-accent border-bg-dark' : 'text-accent border-accent/30 hover:border-accent'}`}>
+                                <div className="md:col-span-3 flex flex-col items-end gap-3">
+                                    <a href={p.link} target="_blank" rel="noopener noreferrer" className={`btn-pill w-full md:w-auto justify-center ${p.featured ? 'bg-bg-dark text-accent border-bg-dark' : 'text-accent border-accent/30 hover:border-accent'}`}>
                                         View Live <ArrowUpRight size={18} />
                                     </a>
+                                    {p.demo && (
+                                        <a href={p.demo} className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 hover:opacity-100 transition-opacity flex items-center gap-2">
+                                            Watch Video Demo <ArrowRight size={12} />
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>

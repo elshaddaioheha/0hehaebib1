@@ -5,8 +5,8 @@
 :root {
     --bg-dark: #1C1B21;
     --accent: #71ADDD;
-    --text-light: #71ADDD;
-    --text-dim: #32609A;
+    --text-off-white: #E2E8F0;
+    --text-dim: #94A3B8;
     --font-display: 'Anton', sans-serif;
     --font-body: 'Outfit', sans-serif;
 }
@@ -19,8 +19,9 @@
 
 body {
     background-color: var(--bg-dark);
-    color: var(--text-light);
+    color: var(--text-off-white);
     font-family: var(--font-body);
+    line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -35,6 +36,15 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 4rem;
+}
+
+p {
+    max-width: 65ch;
+    margin-bottom: 1.5rem;
+}
+
+.container p {
+    max-width: 65ch;
 }
 
 @media (max-width: 768px) {
