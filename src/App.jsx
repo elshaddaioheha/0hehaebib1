@@ -89,7 +89,7 @@ const Header = () => {
         <header ref={headerRef} className="p-4 md:p-6 min-h-screen flex flex-col">
             <div className="flex-1 accent-pattern rounded-[40px] md:rounded-[80px] relative overflow-hidden flex flex-col justify-between p-8 md:p-16">
                 <div className="relative z-20 text-bg-dark font-bold tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm uppercase text-center pt-2 md:pt-4">
-                    <TypingText text="ARCHITECTING SCALABLE DIGITAL INFRASTRUCTURE" />
+                    <TypingText text="BACKEND ARCHITECT | FULL STACK ENGINEER | SOUND DESIGNER" />
                 </div>
 
                 <motion.div
@@ -152,8 +152,8 @@ const Header = () => {
 
 const Nav = () => (
     <nav className="py-12 bg-bg-dark">
-        <div className="container flex justify-center gap-8 md:gap-16">
-            {['About', 'Experience', 'Works', 'Gallery', 'Contact'].map((item) => (
+        <div className="container flex justify-center gap-6 md:gap-16">
+            {['About', 'Expertise', 'Experience', 'Works', 'Gallery', 'Contact'].map((item) => (
                 <a key={item} href={`#${item.toLowerCase()}`} className="text-accent/60 uppercase text-[10px] md:text-xs font-bold tracking-[0.2em] hover:text-accent transition-colors">
                     {item}
                 </a>
@@ -184,18 +184,24 @@ const About = () => {
                     </div>
 
                     <div className="md:w-2/3 flex flex-col gap-8 md:pl-20">
-                        <p className="text-xl md:text-3xl text-accent leading-[1.3] font-medium max-w-[55ch]">
-                            I build <span className="text-white">production-grade</span> systems that bridge the gap between complex backend logic and intuitive user experiences.
+                        <p className="text-xl md:text-3xl text-white leading-[1.3] font-medium max-w-[55ch]">
+                            I engineer <span className="text-accent">Scalable MERN Architectures</span> and <span className="text-accent">Decentralized Web3 Solutions</span>.
                         </p>
                         <p className="text-lg text-white/80 leading-relaxed max-w-[60ch]">
-                            Currently driving backend infrastructure for a biotech startup and leading digital strategy for non-profit initiatives. Backed by a strong foundation in Data Analytics (Google) and Computer Science (Harvard CS50), I focus on delivering scalable, secure, and user-centric solutions.
+                            I specialize in building robust, high-performance ecosystems using MongoDB, Express, React, and Node.js. Beyond standard web development, I bridge the gap between Web2 and Web3—architecting trustless financial systems using Solidity and Hedera Hashgraph that are secure, transparent, and immutable.
+                        </p>
+                        <p className="text-lg text-white/80 leading-relaxed max-w-[60ch]">
+                            My background in Data Analytics (Google/Telus AI) drives a commitment to data integrity and system optimization. This analytical mindset balances my work as a Sound Designer; I approach software architecture with the same technical precision and creative flow that I use to compose in FL Studio.
+                        </p>
+                        <p className="text-lg text-white/80 leading-relaxed max-w-[60ch]">
+                            A proactive engineer grounded in rigorous CS fundamentals from Harvard CS50, I am continuously evolving through Open Source contributions and building solutions that solve real-world problems in emerging markets.
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-4">
                             <div>
                                 <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-4">Core Stack</h4>
                                 <div className="flex flex-wrap gap-2">
-                                    {['React/Next.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB', 'Docker'].map(skill => (
+                                    {['MONGODB', 'EXPRESS.JS', 'REACT.JS', 'NODE.JS', 'TYPESCRIPT', 'NEXT.JS'].map(skill => (
                                         <span key={skill} className="px-3 py-1.5 bg-accent/5 border border-accent/20 rounded-md text-[10px] font-bold uppercase tracking-wider text-accent">
                                             {skill}
                                         </span>
@@ -203,9 +209,9 @@ const About = () => {
                                 </div>
                             </div>
                             <div>
-                                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-4">Web3 & Tools</h4>
+                                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-4">Web3 & Specialized</h4>
                                 <div className="flex flex-wrap gap-2">
-                                    {['Solidity', 'Hardhat', 'Ethers.js', 'AWS', 'CI/CD', 'Supabase'].map(skill => (
+                                    {['SOLIDITY', 'HEDERA SDK', 'DOCKER', 'SYSTEM ARCHITECTURE', 'FL STUDIO'].map(skill => (
                                         <span key={skill} className="px-3 py-1.5 bg-accent/5 border border-accent/20 rounded-md text-[10px] font-bold uppercase tracking-wider text-accent/80">
                                             {skill}
                                         </span>
@@ -219,6 +225,62 @@ const About = () => {
         </section>
     );
 };
+const Expertise = () => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+    const expertiseItems = [
+        {
+            title: "System Architecture",
+            desc: "Designing robust, secure, and maintainable backend ecosystems using microservices (Docker)."
+        },
+        {
+            title: "API Development",
+            desc: "Building scalable RESTful APIs with Node.js and optimizing database interactions (SQL/NoSQL)."
+        },
+        {
+            title: "Web3 & Blockchain",
+            desc: "Implementing trustless logic using Solidity Smart Contracts and the Hedera SDK."
+        },
+        {
+            title: "Frontend Performance",
+            desc: "Engineering responsive UIs with Next.js and Tailwind CSS that achieve 95+ Lighthouse scores."
+        },
+        {
+            title: "Data Modeling",
+            desc: "Designing complex schemas for sensitive data (HealthTech) ensuring high performance and security."
+        },
+        {
+            title: "Sound Design",
+            desc: "Applying technical audio engineering skills to create immersive soundscapes (FL Studio)."
+        }
+    ];
+
+    return (
+        <section ref={ref} id="expertise" className="py-24 bg-bg-dark border-t border-accent/5">
+            <div className="container">
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <h2 className="text-[12vw] font-display leading-[0.8] mb-16 text-right">expertise</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {expertiseItems.map((item, i) => (
+                            <div key={i} className="p-8 rounded-[32px] bg-accent/5 border border-accent/10 hover:border-accent/30 transition-all duration-300 group">
+                                <div className="w-12 h-1 px-4 bg-accent/20 mb-6 group-hover:w-20 transition-all duration-300"></div>
+                                <h3 className="text-2xl font-display text-accent mb-4">{item.title}</h3>
+                                <p className="text-accent/60 leading-relaxed">
+                                    {item.desc}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+};
 
 const Experience = () => {
     const ref = useRef(null);
@@ -226,25 +288,32 @@ const Experience = () => {
 
     const experiences = [
         {
-            company: 'AZ-Genes',
+            company: 'AZ-Genes (Biotech Startup)',
             role: 'Backend Developer',
-            period: 'Oct 2025 – Present',
-            location: 'Remote / Jos, Nigeria',
-            desc: 'Architecting secure server-side logic using Node.js and Supabase for a genetic testing platform. Engineered custom mock API servers and implemented rigorous RLS/RBAC policies.'
-        },
-        {
-            company: 'The Oloja Foundation',
-            role: 'Lead Full Stack Engineer',
-            period: 'Nov 2025 – Present',
-            location: 'Remote / Abuja, Nigeria',
-            desc: 'Developed official platform using Next.js. Achieved near-perfect Lighthouse scores through SSR and Image Optimization. Designed seamless donation routing and newsletter systems.'
-        },
-        {
-            company: 'Freelance / Contract',
-            role: 'Full Stack Software Engineer',
-            period: 'Jan 2025 – Present',
+            period: 'Oct 2025 - Present',
             location: 'Remote',
-            desc: 'Deploying high-performance MERN applications and Solidity smart contracts. Utilizing Docker for consistent development environments and streamlining CI/CD pipelines.'
+            desc: 'Architecting secure Node.js services and building custom mock servers for offline testing.'
+        },
+        {
+            company: 'The Oloja Foundation (Non-Profit)',
+            role: 'Lead Full Stack Engineer',
+            period: 'Nov 2025 - Present',
+            location: 'Remote',
+            desc: 'Engineering the official platform (Next.js) and optimizing performance for low-bandwidth users in emerging markets.'
+        },
+        {
+            company: 'Freelance',
+            role: 'Software Engineer',
+            period: 'Jan 2025 - Present',
+            location: 'Remote',
+            desc: 'Delivering MERN stack applications, Dockerizing environments, and writing Solidity smart contracts.'
+        },
+        {
+            company: 'Telus International',
+            role: 'Data Entry & AI Contributor',
+            period: 'May 2022 - Aug 2023',
+            location: 'Remote',
+            desc: 'High-precision data validation for AI models.'
         }
     ];
 
@@ -285,6 +354,14 @@ const Works = () => {
 
     const projects = [
         {
+            year: 'CASE',
+            title: 'The Oloja Foundation',
+            desc: 'Engineering a Digital Home for Humanity. Built a Next.js application with SSR and optimized image delivery for fast mobile access. Key Tech: Next.js App Router, Tailwind CSS, Vercel Edge Network.',
+            featured: true,
+            link: 'https://oloja.org', // Assuming URL
+            demo: '#'
+        },
+        {
             year: '2025',
             title: 'Agbejo',
             desc: 'A secure P2P payment settlement layer that eliminates intermediary fees. Leveraged Hedera\'s high-throughput consensus to achieve a 99% cost reduction vs. traditional rails.',
@@ -295,17 +372,9 @@ const Works = () => {
             year: 'CORE',
             title: 'SwenAutos',
             desc: 'A decentralized automotive registry designed to stop vehicle identity fraud. Implemented an immutable chain-of-custody that reduced verification time from days to seconds.',
-            featured: true,
             link: 'https://swen-autos.vercel.app',
             demo: '#'
-        },
-        {
-            year: 'HACK',
-            title: 'Àyàn Collection',
-            desc: 'Automating high-volume digital asset distribution. Developed a programmatic minting engine that successfully deployed 1,000+ assets in under 60 seconds.',
-            link: 'https://ayan-collection-nextjs.vercel.app/',
-            demo: '#'
-        },
+        }
     ];
 
     return (
@@ -498,6 +567,7 @@ export default function App() {
             <Header />
             <Nav />
             <About />
+            <Expertise />
             <Experience />
             <Works />
             <Gallery />
