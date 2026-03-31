@@ -105,6 +105,6 @@ This project is configured for Vercel with:
 
 - `vercel.json` for Vite output directory and SPA rewrites
 - `vite.config.ts` for build/test setup
-- `api/contact.ts` for Resend-powered contact form email delivery (expects `RESEND_API_KEY`)
+- Contact form uses EmailJS in the client. Configure env vars: `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY`.
 
 Push to GitHub and import in Vercel for automatic deployments.

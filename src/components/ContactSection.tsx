@@ -1,4 +1,5 @@
 import type React from "react";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Mail, Twitter } from "lucide-react";
 import { useState } from "react";
@@ -11,6 +12,10 @@ export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
 
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -22,17 +27,20 @@ export function ContactSection() {
     setError(null);
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data?.error || "Failed to send message.");
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("Email is not configured. Add EmailJS env vars.");
       }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: form.name,
+          reply_to: form.email,
+          message: form.message,
+        },
+        { publicKey }
+      );
 
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
