@@ -1,0 +1,130 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test with coverage
+        run: npm run test -- --coverage --coverage.reporter=lcov --coverage.reporter=json-summary
+
+      - name: Upload coverage artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-artifacts
+          path: |
+            coverage/lcov.info
+            coverage/coverage-summary.json
+
+      - name: Build
+        run: npm run build
+
+  coverage-badge:
+    needs: quality
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download coverage artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-artifacts
+
+      - name: Generate coverage badge
+        run: |
+          node - <<'EOF'
+          const fs = require('fs');
+          const summaryPath = 'coverage/coverage-summary.json';
+          const summary = JSON.parse(fs.readFileSync(summaryPath, 'utf8'));
+          const pct = summary.total?.lines?.pct ?? summary.total?.statements?.pct ?? 0;
+          const rounded = Math.round(pct * 10) / 10;
+          const color = rounded >= 90
+            ? '#2e8540'
+            : rounded >= 80
+              ? '#4c9a2a'
+              : rounded >= 70
+                ? '#a38f00'
+                : rounded >= 60
+                  ? '#b36b00'
+                  : '#c73e1d';
+          const label = 'coverage';
+          const value = `${rounded}%`;
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="20" role="img" aria-label="${label}: ${value}"><linearGradient id="a" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><rect rx="3" width="120" height="20" fill="#555"/><rect rx="3" x="65" width="55" height="20" fill="${color}"/><path fill="${color}" d="M65 0h4v20h-4z"/><rect rx="3" width="120" height="20" fill="url(#a)"/><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11"><text x="33" y="14">${label}</text><text x="92" y="14">${value}</text></g></svg>`;
+          fs.mkdirSync('coverage', { recursive: true });
+          fs.writeFileSync('coverage/coverage.svg', svg);
+          EOF
+
+      - name: Publish badge to badges branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_branch: badges
+          publish_dir: coverage
+          force_orphan: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    needs: quality
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.VERCEL_TOKEN != ''
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Pull Vercel environment
+        run: vercel pull --yes --environment=production --token ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Vercel build
+        run: vercel build --prod --token ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Vercel deploy
+        run: vercel deploy --prebuilt --prod --token ${{ secrets.VERCEL_TOKEN }}

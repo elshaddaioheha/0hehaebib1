@@ -1,6 +1,8 @@
 # 0hehaebib1 Portfolio
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-00A86B?style=for-the-badge&logo=vercel&logoColor=white)](https://0hehaebib1.vercel.app/)
+[![CI](https://github.com/elshaddaioheha/0hehaebib1/actions/workflows/ci.yml/badge.svg)](https://github.com/elshaddaioheha/0hehaebib1/actions/workflows/ci.yml)
+[![Coverage](https://raw.githubusercontent.com/elshaddaioheha/0hehaebib1/badges/coverage.svg)](https://github.com/elshaddaioheha/0hehaebib1/actions/workflows/ci.yml)
 ![Vite](https://img.shields.io/badge/Vite-6A5ACD?style=for-the-badge&logo=vite&logoColor=white)
 ![React](https://img.shields.io/badge/React-0B1F2A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-0F172A?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
@@ -72,10 +74,10 @@ src/
     ExperienceTimeline.tsx
     ExpertiseSection.tsx
     Footer.tsx
-    GallerySection.tsx
     Hero.tsx
     Navigation.tsx
     ProjectCard.tsx
+    SkillsSection.tsx
     WorksSection.tsx
   data/
     portfolioData.ts
@@ -91,11 +93,18 @@ src/
   main.tsx
 ```
 
+## CI/CD
+
+- GitHub Actions workflow runs lint, typecheck, tests (with coverage), and build on pushes and pull requests to `main`.
+- Coverage badge is published to the `badges` branch from coverage artifacts and referenced at the top of this README.
+- Deploy job triggers on `main` pushes when `VERCEL_TOKEN` (and optionally `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`) are configured in repository secrets.
+
 ## Deployment
 
 This project is configured for Vercel with:
 
 - `vercel.json` for Vite output directory and SPA rewrites
 - `vite.config.ts` for build/test setup
+- `api/contact.ts` for Resend-powered contact form email delivery (expects `RESEND_API_KEY`)
 
 Push to GitHub and import in Vercel for automatic deployments.

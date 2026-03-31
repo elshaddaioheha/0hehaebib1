@@ -1,9 +1,49 @@
+import type React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Mail, Twitter } from "lucide-react";
+import { useState } from "react";
 import { useRevealInView } from "../hooks/useRevealInView";
 
 export function ContactSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus("idle");
+    setError(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data?.error || "Failed to send message.");
+      }
+
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Failed to send message.";
+      setError(message);
+      setStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section ref={ref} id="contact" className="py-24 bg-bg-dark">
@@ -27,15 +67,81 @@ export function ContactSection() {
                   of digital infrastructure together.
                 </p>
                 <div className="flex flex-col gap-8">
-                  <a
-                    href="mailto:elshaddaioheha@gmail.com"
-                    className="group flex items-center gap-4 text-bg-dark font-bold text-2xl md:text-4xl hover:opacity-70 transition-opacity break-all"
-                  >
+                  <div className="flex items-center gap-4 text-bg-dark font-bold text-2xl md:text-4xl">
                     <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-bg-dark flex items-center justify-center shrink-0">
                       <Mail className="w-6 h-6 md:w-8 md:h-8" />
                     </div>
-                    elshaddaioheha@gmail.com
-                  </a>
+                    <a
+                      href="mailto:elshaddaioheha@gmail.com"
+                      className="hover:opacity-70 transition-opacity break-all"
+                    >
+                      elshaddaioheha@gmail.com
+                    </a>
+                  </div>
+
+                  <form className="grid gap-4" onSubmit={handleSubmit}>
+                    <div className="grid gap-2">
+                      <label className="text-bg-dark/70 text-sm font-semibold" htmlFor="name">
+                        Name
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full rounded-2xl border border-bg-dark/20 bg-white px-4 py-3 text-bg-dark focus:outline-none focus:ring-2 focus:ring-accent"
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div className="grid gap-2">
+                      <label className="text-bg-dark/70 text-sm font-semibold" htmlFor="email">
+                        Email
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full rounded-2xl border border-bg-dark/20 bg-white px-4 py-3 text-bg-dark focus:outline-none focus:ring-2 focus:ring-accent"
+                        placeholder="you@example.com"
+                      />
+                    </div>
+                    <div className="grid gap-2">
+                      <label className="text-bg-dark/70 text-sm font-semibold" htmlFor="message">
+                        Project details
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={form.message}
+                        onChange={handleChange}
+                        required
+                        rows={5}
+                        className="w-full rounded-2xl border border-bg-dark/20 bg-white px-4 py-3 text-bg-dark focus:outline-none focus:ring-2 focus:ring-accent"
+                        placeholder="Tell me about your project, timeline, and goals."
+                      />
+                    </div>
+                    <div className="flex items-center gap-4 flex-wrap">
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="btn-pill bg-bg-dark text-accent border-bg-dark flex items-center gap-2 disabled:opacity-60"
+                      >
+                        {isSubmitting ? "Sending..." : "Send message"}
+                        <ArrowUpRight size={20} />
+                      </button>
+                      {status === "success" && (
+                        <span className="text-bg-dark font-semibold">Message sent! I&apos;ll reply soon.</span>
+                      )}
+                      {status === "error" && error && (
+                        <span className="text-red-800 font-semibold">{error}</span>
+                      )}
+                    </div>
+                  </form>
+
                   <div className="flex flex-wrap gap-6 mt-4">
                     <a
                       href="https://github.com/elshaddaioheha"
