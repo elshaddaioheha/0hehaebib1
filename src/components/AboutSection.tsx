@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { coreSkills, web3Skills } from "../data/portfolioData";
+import { skillCategories } from "../data/portfolioData";
 import { useRevealInView } from "../hooks/useRevealInView";
+import { AnimatedHeading } from "./AnimatedHeading";
 
 export function AboutSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
@@ -15,22 +16,21 @@ export function AboutSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <div className="md:w-1/3">
-            <h2 className="text-[12vw] font-display leading-[0.8] mb-12 md:mb-0">about</h2>
+            <AnimatedHeading title="about" direction="left-to-right" className="text-[12vw] mb-12 md:mb-0" />
             <div className="mt-8 text-accent/60 font-bold uppercase tracking-widest text-sm flex flex-col gap-2">
-              <span>Jos, Plateau, Nigeria</span>
-              <span>+234 703 660 5065</span>
+              <span>Nigeria / Remote</span>
             </div>
           </div>
 
           <div className="md:w-2/3 flex flex-col gap-8 md:pl-20">
             <p className="text-xl md:text-3xl text-white leading-[1.3] font-medium max-w-[55ch]">
-              I engineer <span className="text-accent">scalable MERN architectures</span> and{" "}
-              <span className="text-accent">decentralized Web3 solutions</span>.
+              I engineer <span className="text-accent">scalable JavaScript architectures</span> and{" "}
+              <span className="text-accent">blockchain integrations</span>.
             </p>
             <p className="text-lg text-white/80 leading-relaxed max-w-[60ch]">
-              I specialize in building robust, high-performance ecosystems using MongoDB, Express, React,
-              and Node.js. Beyond standard web development, I bridge the gap between Web2 and Web3 by
-              architecting trustless financial systems using Solidity and Hedera Hashgraph.
+              I specialize in building robust, high-performance ecosystems using React, Node.js, and
+              Express. Beyond standard web development, I have worked on blockchain development, specifically
+              integrating the Hedera Hashgraph SDK to build secure, decentralized applications.
             </p>
             <p className="text-lg text-white/80 leading-relaxed max-w-[60ch]">
               My background in data analytics (Google and Telus AI) drives a commitment to data integrity and
@@ -42,34 +42,23 @@ export function AboutSection() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-4">
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-4">Core Stack</h4>
-                <div className="flex flex-wrap gap-2">
-                  {coreSkills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 bg-accent/5 border border-accent/20 rounded-md text-[10px] font-bold uppercase tracking-wider text-accent"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+              {skillCategories.map((cat) => (
+                <div key={cat.category}>
+                  <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-3">
+                    {cat.category}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 bg-accent/5 border border-accent/20 rounded-md text-[10px] font-bold uppercase tracking-wider text-accent"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-4">
-                  Web3 & Specialized
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {web3Skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 bg-accent/5 border border-accent/20 rounded-md text-[10px] font-bold uppercase tracking-wider text-accent/80"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </motion.div>

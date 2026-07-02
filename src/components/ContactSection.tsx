@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Mail, Twitter } from "lucide-react";
 import { useState } from "react";
 import { useRevealInView } from "../hooks/useRevealInView";
+import { AnimatedHeading } from "./AnimatedHeading";
 
 export function ContactSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
@@ -63,10 +64,14 @@ export function ContactSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <div className="relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-              <h2 className="text-[12vw] md:text-[8vw] font-display leading-[0.8] text-bg-dark mb-8 md:mb-0">
-                hire me
-              </h2>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 w-full overflow-hidden">
+              <div className="w-full">
+                <AnimatedHeading
+                  title="hire me"
+                  direction="right-to-left"
+                  className="text-[12vw] md:text-[8vw] text-bg-dark mb-8 md:mb-0"
+                />
+              </div>
             </div>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
@@ -183,7 +188,7 @@ export function ContactSection() {
               </div>
               <div className="flex justify-center md:justify-end">
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-bg-dark/20 bg-bg-dark">
-                  <img src="/profile.png" alt="Elshaddai Oheha" className="w-full h-full object-cover" />
+                  <img src="/profile.png" alt="Oheha Ebibi" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>

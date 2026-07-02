@@ -10,7 +10,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-102A43?style=for-the-badge&logo=typescript&logoColor=3178C6)
 ![Vitest](https://img.shields.io/badge/Vitest-1D2D44?style=for-the-badge&logo=vitest&logoColor=6E9F18)
 
-Modern portfolio site for Elshaddai Oheha with bold typography, animated sections, and data-driven content modules.
+Modern portfolio site for Oheha Ebibi with bold typography, animated sections, and data-driven content modules.
 
 ## Live Demo
 

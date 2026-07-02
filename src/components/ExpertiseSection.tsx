@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { expertiseItems } from "../data/portfolioData";
 import { useRevealInView } from "../hooks/useRevealInView";
+import { AnimatedHeading } from "./AnimatedHeading";
 
 export function ExpertiseSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
@@ -13,7 +14,7 @@ export function ExpertiseSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-[12vw] font-display leading-[0.8] mb-16 text-right">expertise</h2>
+          <AnimatedHeading title="expertise" direction="left-to-right" className="text-[12vw] mb-16 text-right" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {expertiseItems.map((item) => (
               <div

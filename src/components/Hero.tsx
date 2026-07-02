@@ -34,7 +34,7 @@ export function Hero() {
     <header ref={headerRef} className="p-4 md:p-6 min-h-screen flex flex-col">
       <div className="flex-1 accent-pattern rounded-[40px] md:rounded-[80px] relative overflow-hidden flex flex-col justify-between p-8 md:p-16">
         <div className="relative z-20 text-bg-dark font-bold tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm uppercase text-center pt-2 md:pt-4">
-          <TypingText text="BACKEND ARCHITECT | FULL STACK ENGINEER | SOUND DESIGNER" />
+          <TypingText text="SOFTWARE ENGINEER | FULL STACK DEVELOPER | SOUND DESIGNER" />
         </div>
 
         <motion.div
@@ -46,20 +46,20 @@ export function Hero() {
           }}
         >
           <h1 className="text-[18vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap -translate-y-12">
-            <MorphingText text="0HEHAEBIB1" />
+            <MorphingText text="OHEHA EBIBI" />
           </h1>
           <h1 className="text-[18vw] font-display leading-[0.7] text-bg-dark whitespace-nowrap">
-            <MorphingText text="0HEHAEBIB1" />
+            <MorphingText text="OHEHA EBIBI" />
           </h1>
           <h1 className="text-[18vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap translate-y-12">
-            <MorphingText text="0HEHAEBIB1" />
+            <MorphingText text="OHEHA EBIBI" />
           </h1>
         </motion.div>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-all duration-300 z-[100]">
           <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80">
             <div className="w-full h-full rounded-full overflow-hidden border-4 border-bg-dark/30 shadow-2xl">
-              <img src="/profile.png" alt="Elshaddai Oheha" className="w-full h-full object-cover" />
+              <img src="/profile.png" alt="Oheha Ebibi" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>

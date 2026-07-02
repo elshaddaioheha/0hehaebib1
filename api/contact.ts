@@ -49,7 +49,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await resend.emails.send({
       from: "portfolio@oheha.dev",
       to: ["elshaddaioheha@gmail.com"],
-      reply_to: email,
+      replyTo: email,
       subject: `Portfolio contact from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
     });

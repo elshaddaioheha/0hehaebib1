@@ -22,54 +22,89 @@ export const socialLinks: SocialLink[] = [
   { label: "Instagram", href: "https://instagram.com/0hehaebib1" },
 ];
 
+export const skillCategories = [
+  {
+    category: "Frontend & Core",
+    skills: ["JavaScript", "React.js", "Figma"],
+  },
+  {
+    category: "Backend & APIs",
+    skills: ["Node.js", "Express.js"],
+  },
+  {
+    category: "Databases",
+    skills: ["Supabase", "Firebase", "MongoDB"],
+  },
+  {
+    category: "DevOps & Blockchain",
+    skills: ["Docker", "Hedera SDK"],
+  },
+] as const;
+
+// Backward compatible lists if needed
 export const coreSkills = [
-  "MONGODB",
-  "EXPRESS.JS",
-  "REACT.JS",
-  "NODE.JS",
-  "TYPESCRIPT",
-  "NEXT.JS",
+  "JavaScript",
+  "React.js",
+  "Figma",
+  "Node.js",
+  "Express.js",
 ] as const;
 
 export const web3Skills = [
-  "SOLIDITY",
-  "HEDERA SDK",
-  "DOCKER",
-  "SYSTEM ARCHITECTURE",
-  "FL STUDIO",
+  "Supabase",
+  "Firebase",
+  "MongoDB",
+  "Docker",
+  "Hedera SDK",
 ] as const;
 
 export const expertiseItems: ExpertiseItem[] = [
   {
-    title: "System Architecture",
-    desc: "Designing robust, secure, and maintainable backend ecosystems using microservices (Docker).",
+    title: "Full-Stack JavaScript Engineering",
+    desc: "Architecting end-to-end applications using React for responsive frontends and Node.js/Express for robust, scalable backend services.",
   },
   {
-    title: "API Development",
-    desc: "Building scalable RESTful APIs with Node.js and optimizing database interactions (SQL/NoSQL).",
+    title: "UI Design & Figma Integration",
+    desc: "Translating high-fidelity Figma mockups into pixel-perfect, responsive React interfaces with clean layout semantics and micro-interactions.",
   },
   {
-    title: "Web3 & Blockchain",
-    desc: "Implementing trustless logic using Solidity smart contracts and the Hedera SDK.",
+    title: "Database Architecture",
+    desc: "Designing and optimizing data storage systems across Supabase, Firebase, and MongoDB, ensuring robust data integrity and efficient queries.",
   },
   {
-    title: "Frontend Performance",
-    desc: "Engineering responsive UIs with Next.js and Tailwind CSS that achieve 95+ Lighthouse scores.",
+    title: "Blockchain Integration",
+    desc: "Building specialized blockchain features and ledger integrations utilizing the Hedera Hashgraph SDK in JavaScript/TypeScript environments.",
   },
   {
-    title: "Data Modeling",
-    desc: "Designing complex schemas for sensitive data (HealthTech) ensuring high performance and security.",
+    title: "Containerization & DevOps",
+    desc: "Implementing Docker containerization to standardize local development and build predictable, environment-agnostic CI/CD pipelines.",
+  },
+  {
+    title: "API Design & Performance",
+    desc: "Engineering RESTful and real-time APIs with Express, integrating third-party services and optimizing security, logging, and data flows.",
   },
   {
     title: "Sound Design",
-    desc: "Applying technical audio engineering skills to create immersive soundscapes (FL Studio).",
+    desc: "Applying technical audio engineering skills to create immersive soundscapes and ambient tracks using FL Studio.",
   },
 ];
 
 export const experiences: ExperienceItem[] = [
   {
+    company: "Bolojar Technologies",
+    role: "Software Engineer (Full-time)",
+    period: "Apr 2026 - Present",
+    location: "Lagos, Nigeria",
+    desc: "Developing scalable full-stack applications with JavaScript, optimizing databases, and orchestrating containerized pipelines.",
+    highlights: [
+      "Building client frontends with React.js and backend service engines with Node.js/Express.",
+      "Configuring datastores across MongoDB, Supabase, and Firebase.",
+      "Containerizing local environments and deployment nodes using Docker.",
+    ],
+  },
+  {
     company: "AZ-Genes (Biotech Startup)",
-    role: "Backend Developer",
+    role: "Backend Developer (Part-time)",
     period: "Oct 2025 - Present",
     location: "Remote",
     desc: "Architecting secure Node.js services and building custom mock servers for offline testing.",
@@ -81,7 +116,7 @@ export const experiences: ExperienceItem[] = [
   },
   {
     company: "The Oloja Foundation (Non-Profit)",
-    role: "Lead Full Stack Engineer",
+    role: "Lead Full Stack Engineer (Part-time)",
     period: "Nov 2025 - Present",
     location: "Remote",
     desc: "Engineering the official platform (Next.js) and optimizing performance for low-bandwidth users in emerging markets.",
@@ -93,19 +128,19 @@ export const experiences: ExperienceItem[] = [
   },
   {
     company: "Freelance",
-    role: "Software Engineer",
+    role: "Software Engineer (Part-time)",
     period: "Jan 2025 - Present",
     location: "Remote",
-    desc: "Delivering MERN stack applications, Dockerizing environments, and writing Solidity smart contracts.",
+    desc: "Delivering MERN stack applications, Dockerizing environments, and writing Hedera-backed smart contracts.",
     highlights: [
-      "Shipped production MERN and Web3 apps with containerized pipelines for clients.",
-      "Implemented Solidity contracts and Hardhat testing for escrow and token flows.",
+      "Shipped production MERN and blockchain applications with containerized pipelines for clients.",
+      "Implemented blockchain integrations using Hedera SDK for secure, decentralized escrow and transaction flows.",
       "Delivered performance-focused React frontends with Tailwind and TypeScript.",
     ],
   },
   {
     company: "Telus International",
-    role: "Data Entry & AI Contributor",
+    role: "Data Entry & AI Contributor (Part-time)",
     period: "May 2022 - Aug 2023",
     location: "Remote",
     desc: "High-precision data validation for AI models.",
@@ -120,26 +155,57 @@ export const experiences: ExperienceItem[] = [
 export const projects: ProjectItem[] = [
   {
     year: "2026",
-    title: "TEBI LMS",
-    desc: "LMS for event business owners and planners with resilient streaming for low-data networks.",
+    title: "distriQ (Distributed Job Queue)",
+    desc: "A production-grade, Redis-backed distributed job queue for Node.js and TypeScript modeled after RabbitMQ, designed for linearizable state transitions, at-least-once delivery, and worker pool scaling.",
     featured: true,
-    link: "https://tebiglobal.vercel.app",
+    category: "backend",
+    link: "https://github.com/elshaddaioheha/distriQ",
+    repo: "https://github.com/elshaddaioheha/distriQ",
+    techStack: ["TypeScript", "Node.js", "Redis", "Lua Scripts", "Docker"],
+    achievements: [
+      "Ensures atomic job scheduling and state transition linearizability using transactional Lua scripts inside Redis ZSETs.",
+      "Implements a multi-worker pool with active heartbeat monitoring, auto-recovery for crashed workers, and rate limiting.",
+      "Supports delayed jobs, priority queuing, deduplication, and a capped dead-letter queue (DLQ) for failed runs.",
+    ],
+  },
+  {
+    year: "2026",
+    title: "Diamond Dreams Group",
+    desc: "A comprehensive digital ecosystem for event services and business training, integrating the TEBI LMS platform to deliver seamless course delivery and community engagement.",
+    featured: true,
+    category: "fullstack",
+    link: "https://diamonddreamsgroup.com",
     techStack: ["Next.js", "TypeScript", "Tailwind", "Redis", "Node.js", "Vercel"],
     achievements: [
-      "Handles 1k+ concurrent learners with Redis-backed session caching to keep latency low during launches.",
-      "Adaptive high-bitrate encoding tuned for low-data environments to keep streams crisp without buffering spikes.",
-      "Event-focused onboarding flows that help planners ship courses quickly.",
+      "Architected a unified digital platform for event management and business learning, scaling user engagement and course access.",
+      "Integrated TEBI LMS with Redis-backed session caching to handle concurrent learners and ensure sub-second response times.",
+      "Configured adaptive video encoding for low-data networks, allowing smooth media playback across various user connections.",
     ],
-    media: { src: "/tebi.gif", alt: "TEBI LMS in action" },
+    media: { src: "/tebi.gif", alt: "Diamond Dreams Group homepage" },
+  },
+  {
+    year: "2025",
+    title: "Enterprise Node.js Template",
+    desc: "An enterprise layered API boilerplate in JavaScript/Node.js, forked and extended to demonstrate clean architecture, type-safe validations, and comprehensive error containment.",
+    category: "backend",
+    link: "https://github.com/elshaddaioheha/node-template-oheha",
+    repo: "https://github.com/elshaddaioheha/node-template-oheha",
+    techStack: ["Node.js", "Express.js", "JavaScript", "VSL Validator", "Architecture"],
+    achievements: [
+      "Extended a layered REST architecture (Controller-Service-Repository), decoupling HTTP routing logic from business services.",
+      "Constructed custom schema specs utilizing Validator Spec Language (VSL) to enforce strong typing and value normalization.",
+      "Configured unified error handlers, winston logging telemetry, path aliases, and standard mock utilities.",
+    ],
   },
   {
     year: "2025",
     title: "Swen-Autos",
-    desc: "Automobile marketplace bridging Web2 and Web3 with blockchain-backed trust and broad payment options.",
+    desc: "Automobile marketplace integrating blockchain-backed trust verification and broad payment gateways.",
+    category: "fullstack",
     link: "https://swen-autos.vercel.app",
-    techStack: ["Next.js", "TypeScript", "Tailwind", "Node.js", "Solidity", "Vercel"],
+    techStack: ["Next.js", "TypeScript", "Tailwind", "Node.js", "Hedera SDK", "Vercel"],
     achievements: [
-      "Blockchain-backed identity for listings to reduce counterfeits across buyers and sellers.",
+      "Hedera-backed listing validation to prevent counterfeits across buyers and sellers.",
       "Multi-rail checkout supports fiat and crypto flows with escrow-style safety.",
       "Optimized search and listing delivery for fast browsing on low-bandwidth devices.",
     ],
@@ -148,11 +214,12 @@ export const projects: ProjectItem[] = [
   {
     year: "2025",
     title: "Agbejo",
-    desc: "P2P token swap platform with secure smart contracts and smooth Web2 → Web3 onboarding.",
+    desc: "P2P escrow swap platform with secure smart contract validation and smooth onboarding.",
+    category: "fullstack",
     link: "https://agbejo.vercel.app",
     techStack: ["Next.js", "TypeScript", "Tailwind", "Hardhat", "Solidity", "Node.js"],
     achievements: [
-      "Hardhat-compiled smart contract enforces escrowed swaps to reduce counterparty risk.",
+      "Smart contract logic that enforces escrowed swaps on-chain to reduce counterparty risk.",
       "Bridges Web2 auth into wallet flows so non-crypto users can complete swaps without friction.",
       "Swap flows tuned for low latency across multiple tokens.",
     ],
@@ -162,6 +229,7 @@ export const projects: ProjectItem[] = [
     year: "2024",
     title: "Breezefee",
     desc: "Payment gateway for school fees with secure parent/school flows and production-grade concurrency.",
+    category: "fullstack",
     link: "https://breezefee-32f69.web.app/",
     techStack: ["React", "TypeScript", "Tailwind", "Firebase", "Node.js"],
     achievements: [
@@ -175,6 +243,7 @@ export const projects: ProjectItem[] = [
     year: "2024",
     title: "The Oloja Foundation",
     desc: "Non-profit platform handling donor payments with Paystack and performant content delivery.",
+    category: "fullstack",
     link: "https://theolojafoundation.vercel.app",
     techStack: ["Next.js", "TypeScript", "Tailwind", "Paystack", "Vercel"],
     achievements: [
@@ -191,7 +260,7 @@ export const galleryItems: GalleryItem[] = [
   { name: "SwenAutos (GIF)", src: "/swen-autos.gif", alt: "SwenAutos live demo" },
   { name: "Agbejo", src: "/gallery-agbejo.png", alt: "Agbejo Escrow" },
   { name: "Agbejo (GIF)", src: "/agebjo.gif", alt: "Agbejo swap flow" },
-  { name: "TEBI", src: "/tebi.gif", alt: "TEBI LMS" },
+  { name: "Diamond Dreams Group", src: "/tebi.gif", alt: "Diamond Dreams Group" },
   { name: "Breezefee", src: "/breezefee.gif", alt: "Breezefee payments" },
   { name: "Oloja Foundation", src: "/gallery-oloja.png", alt: "Oloja Foundation" },
   { name: "Ayan Collection", src: "/gallery-ayan.png", alt: "Ayan Collection" },

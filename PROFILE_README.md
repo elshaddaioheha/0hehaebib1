@@ -1,6 +1,6 @@
-# Hi, I'm Elshaddai Oheha
+# Hi, I'm Oheha Ebibi
 
-Backend architect & full-stack engineer bridging Web2 reliability with Web3 trust. I build high-concurrency products, resilient data flows, and animated, performant interfaces.
+Software engineer & full-stack developer. I build high-concurrency products, resilient database layers, and animated, performant interfaces.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-0hehaebib1.vercel.app-111827?style=for-the-badge&logo=vercel)](https://0hehaebib1.vercel.app)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/ojeka-ebibi)
@@ -9,14 +9,14 @@ Backend architect & full-stack engineer bridging Web2 reliability with Web3 trus
 
 ## Skills
 
-- Frontend: React, Next.js, TypeScript, Tailwind, Framer Motion
-- Backend: Node.js, Express, Redis, PostgreSQL, MongoDB
-- Web3: Solidity, Hardhat, Hedera, Wallet integration
-- Infra: Docker, Vercel, CI, caching, perf budgets
+- Frontend: JavaScript, React, Tailwind, Framer Motion
+- Backend: Node.js, Express
+- Databases: Supabase, Firebase, MongoDB
+- DevOps & Blockchain: Docker, Hedera SDK
 
 ## Featured Projects
 
-### TEBI LMS — https://tebiglobal.vercel.app
+### Diamond Dreams Group — https://diamonddreamsgroup.com
 Badges: ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript) ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis) ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel)
 
 Architecture (Mermaid):
@@ -25,15 +25,14 @@ graph TD;
   User-->Edge(Vercel Edge);
   Edge-->App(Next.js / TS);
   App-->Cache[(Redis Sessions)];
-  App-->Storage[(Streaming + Media)];
+  App-->Storage[(TEBI LMS Video Storage)];
 ```
 Challenges Overcome:
-- Sustained 1k+ concurrent learners with Redis session caching to keep latency low.
-- Tuned video bitrate for low-data networks without quality collapse.
-- Event-first onboarding to help planners ship courses fast.
+- Unified event planning platform and integrated TEBI LMS, handling 1k+ concurrent learners with Redis session caching.
+- Tuned video bitrate for low-data networks to ensure smooth course streaming.
 
 ### Swen-Autos — https://swen-autos.vercel.app
-Badges: ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs) ![Solidity](https://img.shields.io/badge/Solidity-363636?logo=solidity) ![Tailwind](https://img.shields.io/badge/Tailwind-0EA5E9?logo=tailwindcss)
+Badges: ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs) ![Hedera SDK](https://img.shields.io/badge/Hedera-SDK-000000) ![Tailwind](https://img.shields.io/badge/Tailwind-0EA5E9?logo=tailwindcss)
 
 Architecture (Mermaid):
 ```mermaid
@@ -41,29 +40,28 @@ graph TD;
   Buyer-->Web(Next.js UI);
   Seller-->Web;
   Web-->API(Node/TS);
-  API-->Chain[(Smart Contracts)];
+  Web-->Ledger[(Hedera SDK)];
   API-->Payments[(Fiat & Crypto Rails)];
 ```
 Challenges Overcome:
-- Blockchain-backed listing identity to curb counterfeits.
-- Multi-rail checkout (fiat + crypto) with escrow safety.
+- Integrated Hedera listing validation to ensure listing authenticity.
+- Multi-rail checkout (fiat + crypto) with escrow security features.
 - Search/listing performance tuned for low-bandwidth devices.
 
 ### Agbejo — https://agbejo.vercel.app
-Badges: ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs) ![Hardhat](https://img.shields.io/badge/Hardhat-F7DF1E?logo=ethereum) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript)
+Badges: ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs) ![Solidity](https://img.shields.io/badge/Solidity-363636?logo=solidity) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript)
 
 Architecture (Mermaid):
 ```mermaid
 graph TD;
   User-->UI(Next.js UI);
   UI-->Svc(Node);
-  Svc-->Contracts[(Hardhat Contracts)];
-  Svc-->Auth(Web2 onboarding);
+  Svc-->Contracts[(Smart Contracts)];
+  Svc-->Auth(Escrow Onboarding);
 ```
 Challenges Overcome:
-- Hardhat-compiled escrow contract for token swaps.
-- Web2-to-Web3 bridge so non-crypto users can swap smoothly.
-- Low-latency swap execution across multiple tokens.
+- Enforced automated escrow swaps on-chain using secure smart contracts.
+- Low-latency verification and transaction handling.
 
 ### Breezefee — https://breezefee-32f69.web.app/
 Badges: ![React](https://img.shields.io/badge/React-20232A?logo=react) ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase) ![Tailwind](https://img.shields.io/badge/Tailwind-0EA5E9?logo=tailwindcss)
@@ -80,6 +78,7 @@ Challenges Overcome:
 - Peak-term concurrency handled with responsive, idempotent payment submission.
 - Clear parent-to-school receipt flows for term/session fees.
 - Mobile-first checkout for guardians.
+
 
 ### Oloja Foundation — https://theolojafoundation.vercel.app
 Badges: ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs) ![Paystack](https://img.shields.io/badge/Paystack-1D1C3D?logo=paystack) ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel)

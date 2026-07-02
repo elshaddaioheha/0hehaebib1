@@ -31,6 +31,7 @@ export type ProjectItem = {
     alt: string;
   };
   demo?: string;
+  category?: "backend" | "fullstack";
 };
 
 export type GalleryItem = {
