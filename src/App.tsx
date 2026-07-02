@@ -5,6 +5,7 @@ import { ExperienceTimeline } from "./components/ExperienceTimeline";
 import { ExpertiseSection } from "./components/ExpertiseSection";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
+import { MusicPlayer } from "./components/MusicPlayer";
 import { Navigation } from "./components/Navigation";
 import { SkillsSection } from "./components/SkillsSection";
 import { WorksSection } from "./components/WorksSection";
@@ -21,7 +22,9 @@ export default function App() {
       <WorksSection />
       <ContactSection />
       <Footer />
+      <MusicPlayer />
       <Analytics />
     </div>
   );
 }
+

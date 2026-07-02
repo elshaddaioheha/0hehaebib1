@@ -3,7 +3,7 @@ import { navItems } from "../data/portfolioData";
 export function Navigation() {
   return (
     <nav className="py-12 bg-bg-dark">
-      <div className="container flex justify-center gap-6 md:gap-16">
+      <div className="container flex flex-wrap justify-center gap-x-4 gap-y-2 md:gap-x-16">
         {navItems.map((item) => (
           <a
             key={item}
