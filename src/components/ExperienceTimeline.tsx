@@ -27,7 +27,7 @@ export function ExperienceTimeline() {
                       title={exp.role}
                       direction="left-to-right"
                       tag="h3"
-                      className="text-3xl md:text-4xl text-accent"
+                      className="text-3xl md:text-4xl text-accent whitespace-normal"
                     />
                     <p className="text-lg text-accent/60 font-bold uppercase mt-2">
                       {exp.company} • {exp.location}

@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface AnimatedHeadingProps {
   title: string;
@@ -15,6 +15,14 @@ export function AnimatedHeading({
   tag = "h2",
 }: AnimatedHeadingProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" ? window.innerWidth < 768 : false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -33,8 +41,8 @@ export function AnimatedHeading({
   return (
     <div ref={containerRef} className="overflow-hidden select-none pointer-events-none w-full">
       <MotionTag
-        style={{ x }}
-        className={`font-display whitespace-nowrap ${className}`}
+        style={isMobile ? {} : { x }}
+        className={`font-display ${className.includes("whitespace-") ? "" : "whitespace-nowrap"} ${className}`}
       >
         {title}
       </MotionTag>

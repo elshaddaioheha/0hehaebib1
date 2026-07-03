@@ -30,7 +30,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 title={project.title}
                 direction={isBlue ? "left-to-right" : "right-to-left"}
                 tag="h4"
-                className={`text-3xl md:text-5xl group-hover:translate-x-2 transition-transform duration-300 ${
+                className={`text-3xl md:text-5xl group-hover:translate-x-2 transition-transform duration-300 whitespace-normal ${
                   isBlue ? "text-bg-dark" : "text-accent"
                 }`}
               />
