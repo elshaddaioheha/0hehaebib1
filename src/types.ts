@@ -29,6 +29,8 @@ export type ProjectItem = {
   media?: {
     src: string;
     alt: string;
+    width: number;
+    height: number;
   };
   demo?: string;
   category?: "backend" | "fullstack";
@@ -38,4 +40,6 @@ export type GalleryItem = {
   name: string;
   src: string;
   alt: string;
+  width: number;
+  height: number;
 };

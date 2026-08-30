@@ -181,7 +181,7 @@ export const projects: ProjectItem[] = [
       "Integrated TEBI LMS with Redis-backed session caching to handle concurrent learners and ensure sub-second response times.",
       "Configured adaptive video encoding for low-data networks, allowing smooth media playback across various user connections.",
     ],
-    media: { src: "/tebi.gif", alt: "Diamond Dreams Group homepage" },
+    media: { src: "/tebi.gif", alt: "Diamond Dreams Group homepage", width: 1858, height: 912 },
   },
   {
     year: "2025",
@@ -209,7 +209,7 @@ export const projects: ProjectItem[] = [
       "Multi-rail checkout supports fiat and crypto flows with escrow-style safety.",
       "Optimized search and listing delivery for fast browsing on low-bandwidth devices.",
     ],
-    media: { src: "/swen-autos.gif", alt: "Swen-Autos marketplace demo" },
+    media: { src: "/swen-autos.gif", alt: "Swen-Autos marketplace demo", width: 1860, height: 912 },
   },
   {
     year: "2025",
@@ -223,7 +223,7 @@ export const projects: ProjectItem[] = [
       "Bridges Web2 auth into wallet flows so non-crypto users can complete swaps without friction.",
       "Swap flows tuned for low latency across multiple tokens.",
     ],
-    media: { src: "/agebjo.gif", alt: "Agbejo swap flow" },
+    media: { src: "/agebjo.gif", alt: "Agbejo swap flow", width: 1896, height: 1080 },
   },
   {
     year: "2024",
@@ -237,7 +237,7 @@ export const projects: ProjectItem[] = [
       "Supports onboarded schools managing term/session fees and receipts in one place.",
       "Fast, low-friction checkout tuned for mobile parents and guardians.",
     ],
-    media: { src: "/breezefee.gif", alt: "Breezefee payment flow" },
+    media: { src: "/breezefee.gif", alt: "Breezefee payment flow", width: 1898, height: 1080 },
   },
   {
     year: "2024",
@@ -251,17 +251,17 @@ export const projects: ProjectItem[] = [
       "Optimized hero and gallery media for fast loads on slow networks.",
       "Content structure tailored for campaigns and reporting to stakeholders.",
     ],
-    media: { src: "/gallery-oloja.png", alt: "Oloja Foundation homepage" },
+    media: { src: "/gallery-oloja.png", alt: "Oloja Foundation homepage", width: 1024, height: 477 },
   },
 ];
 
 export const galleryItems: GalleryItem[] = [
-  { name: "SwenAutos", src: "/gallery-swenautos.png", alt: "SwenAutos Platform" },
-  { name: "SwenAutos (GIF)", src: "/swen-autos.gif", alt: "SwenAutos live demo" },
-  { name: "Agbejo", src: "/gallery-agbejo.png", alt: "Agbejo Escrow" },
-  { name: "Agbejo (GIF)", src: "/agebjo.gif", alt: "Agbejo swap flow" },
-  { name: "Diamond Dreams Group", src: "/tebi.gif", alt: "Diamond Dreams Group" },
-  { name: "Breezefee", src: "/breezefee.gif", alt: "Breezefee payments" },
-  { name: "Oloja Foundation", src: "/gallery-oloja.png", alt: "Oloja Foundation" },
-  { name: "Ayan Collection", src: "/gallery-ayan.png", alt: "Ayan Collection" },
+  { name: "SwenAutos", src: "/gallery-swenautos.png", alt: "SwenAutos Platform", width: 1024, height: 573 },
+  { name: "SwenAutos (GIF)", src: "/swen-autos.gif", alt: "SwenAutos live demo", width: 1860, height: 912 },
+  { name: "Agbejo", src: "/gallery-agbejo.png", alt: "Agbejo Escrow", width: 1024, height: 489 },
+  { name: "Agbejo (GIF)", src: "/agebjo.gif", alt: "Agbejo swap flow", width: 1896, height: 1080 },
+  { name: "Diamond Dreams Group", src: "/tebi.gif", alt: "Diamond Dreams Group", width: 1858, height: 912 },
+  { name: "Breezefee", src: "/breezefee.gif", alt: "Breezefee payments", width: 1898, height: 1080 },
+  { name: "Oloja Foundation", src: "/gallery-oloja.png", alt: "Oloja Foundation", width: 1024, height: 477 },
+  { name: "Ayan Collection", src: "/gallery-ayan.png", alt: "Ayan Collection", width: 1024, height: 473 },
 ];

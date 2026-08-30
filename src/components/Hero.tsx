@@ -59,7 +59,15 @@ export function Hero() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-all duration-300 z-[100]">
           <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80">
             <div className="w-full h-full rounded-full overflow-hidden border-4 border-bg-dark/30 shadow-2xl">
-              <img src="/profile.png" alt="Oheha Ebibi" className="w-full h-full object-cover" />
+              <img
+                src="/profile.png"
+                alt="Oheha Ebibi, Software Engineer and Full Stack Developer"
+                width={503}
+                height={496}
+                fetchPriority="high"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

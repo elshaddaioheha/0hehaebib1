@@ -69,7 +69,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             <div className={`mt-4 rounded-3xl overflow-hidden border bg-black/5 ${
               isBlue ? "border-bg-dark/10" : "border-accent/15"
             }`}>
-              <img src={project.media.src} alt={project.media.alt} className="w-full h-full object-cover" />
+              <img
+                src={project.media.src}
+                alt={project.media.alt}
+                width={project.media.width}
+                height={project.media.height}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
             </div>
           ) : null}
         </div>

@@ -38,7 +38,15 @@ export function GallerySection() {
               key={item.name}
               className="group aspect-video rounded-[40px] md:rounded-[60px] overflow-hidden border border-accent/10 relative gallery-mockup"
             >
-              <img src={item.src} className="gallery-img" alt={item.alt} />
+              <img
+                src={item.src}
+                alt={item.alt}
+                width={item.width}
+                height={item.height}
+                loading="lazy"
+                decoding="async"
+                className="gallery-img"
+              />
               <div className="absolute inset-0 bg-bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                 <span className="text-accent font-display text-2xl">{item.name}</span>
               </div>
