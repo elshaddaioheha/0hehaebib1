@@ -60,9 +60,13 @@ jobs:
           fetch-depth: 0
 
       - name: Download coverage artifacts
+        # upload-artifact strips the common 'coverage/' ancestor, so the files sit
+        # at the artifact root; extract them back into coverage/ where the badge
+        # script and publish_dir both expect them.
         uses: actions/download-artifact@v4
         with:
           name: coverage-artifacts
+          path: coverage
 
       - name: Generate coverage badge
         run: |
