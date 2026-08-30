@@ -23,6 +23,15 @@ interface Track {
   durationText: string;
 }
 
+// The subset of the Audius public API responses this player consumes
+interface AudiusTrack {
+  id: string;
+  title: string;
+  genre?: string;
+  duration: number;
+  user: { name: string };
+}
+
 const TRACKS: Track[] = [
   {
     title: "In Route",
@@ -143,17 +152,17 @@ export function MusicPlayer() {
     try {
       // 1. Fetch live creator/host node
       const hostRes = await fetch("https://api.audius.co");
-      const hostJson = await hostRes.json();
+      const hostJson = (await hostRes.json()) as { data: string[] };
       const activeNode = hostJson.data[0];
 
       // 2. Fetch top 5 trending tracks from the public API
       const tracksRes = await fetch(
         `${activeNode}/v1/tracks/trending?app_name=oheha_portfolio&limit=5`
       );
-      const tracksJson = await tracksRes.json();
+      const tracksJson = (await tracksRes.json()) as { data?: AudiusTrack[] };
 
       if (tracksJson.data && tracksJson.data.length > 0) {
-        const livePlaylist: Track[] = tracksJson.data.map((item: any) => ({
+        const livePlaylist: Track[] = tracksJson.data.map((item) => ({
           title: item.title,
           artist: item.user.name,
           src: `${activeNode}/v1/tracks/${item.id}/stream?app_name=oheha_portfolio`,

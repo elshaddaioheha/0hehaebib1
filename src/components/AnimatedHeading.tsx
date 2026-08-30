@@ -36,7 +36,8 @@ export function AnimatedHeading({
     direction === "left-to-right" ? [-60, 60] : [60, -60] // slightly smaller range for subheadings
   );
 
-  const MotionTag = motion[tag] as any;
+  // motion[tag] is a union of motion components; all accept the style/className we pass
+  const MotionTag = motion[tag] as typeof motion.h2;
 
   return (
     <div ref={containerRef} className="overflow-hidden select-none pointer-events-none w-full">
