@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
           cache: npm
@@ -39,7 +39,7 @@ jobs:
         run: npm run test -- --coverage --coverage.reporter=lcov --coverage.reporter=json-summary
 
       - name: Upload coverage artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: coverage-artifacts
           path: |
@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout (full history)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -63,7 +63,7 @@ jobs:
         # upload-artifact strips the common 'coverage/' ancestor, so the files sit
         # at the artifact root; extract them back into coverage/ where the badge
         # script and publish_dir both expect them.
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: coverage-artifacts
           path: coverage
@@ -129,11 +129,11 @@ jobs:
 
       - name: Checkout
         if: steps.guard.outputs.enabled == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
         if: steps.guard.outputs.enabled == 'true'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
           cache: npm
