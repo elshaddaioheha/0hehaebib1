@@ -30,7 +30,9 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "@vercel/node": "^3.2.13",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^2.1.9",
     "autoprefixer": "^10.4.23",
     "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.2",
@@ -44,7 +46,6 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1",
     "vite": "^5.1.4",
-    "vitest": "^2.1.8",
-    "@vercel/node": "^3.2.13"
+    "vitest": "^2.1.8"
   }
 }
