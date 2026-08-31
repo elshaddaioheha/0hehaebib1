@@ -2,7 +2,7 @@
 
 Software engineer & full-stack developer. I build high-concurrency products, resilient database layers, and animated, performant interfaces.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-0hehaebib1.vercel.app-111827?style=for-the-badge&logo=vercel)](https://0hehaebib1.vercel.app)
+[![Portfolio](https://img.shields.io/badge/Portfolio-oheha.vercel.app-111827?style=for-the-badge&logo=vercel)](https://oheha.vercel.app)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/ojeka-ebibi)
 [![GitHub](https://img.shields.io/badge/GitHub-@elshaddaioheha-111827?style=for-the-badge&logo=github)](https://github.com/elshaddaioheha)
 [![Email](https://img.shields.io/badge/Email-hello%40oheha.dev-4338CA?style=for-the-badge&logo=minutemailer)](mailto:elshaddaioheha@gmail.com)
@@ -97,5 +97,5 @@ Challenges Overcome:
 - Campaign pages structured for transparent impact reporting.
 
 ## Portfolio
-- Live site: https://0hehaebib1.vercel.app
+- Live site: https://oheha.vercel.app
 - Code: https://github.com/elshaddaioheha/0hehaebib1

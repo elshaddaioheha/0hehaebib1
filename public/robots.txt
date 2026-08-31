@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://0hehaebib1.vercel.app/sitemap.xml
+Sitemap: https://oheha.vercel.app/sitemap.xml

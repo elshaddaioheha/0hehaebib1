@@ -1,6 +1,6 @@
 # 0hehaebib1 Portfolio
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-00A86B?style=for-the-badge&logo=vercel&logoColor=white)](https://0hehaebib1.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-00A86B?style=for-the-badge&logo=vercel&logoColor=white)](https://oheha.vercel.app/)
 [![CI](https://github.com/elshaddaioheha/0hehaebib1/actions/workflows/ci.yml/badge.svg)](https://github.com/elshaddaioheha/0hehaebib1/actions/workflows/ci.yml)
 [![Coverage](https://raw.githubusercontent.com/elshaddaioheha/0hehaebib1/badges/coverage.svg)](https://github.com/elshaddaioheha/0hehaebib1/actions/workflows/ci.yml)
 ![Vite](https://img.shields.io/badge/Vite-6A5ACD?style=for-the-badge&logo=vite&logoColor=white)
@@ -14,7 +14,7 @@ Modern portfolio site for Oheha Ebibi with bold typography, animated sections, a
 
 ## Live Demo
 
-- https://0hehaebib1.vercel.app/
+- https://oheha.vercel.app/
 
 ## Screenshot
 

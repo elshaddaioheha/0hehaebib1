@@ -24,7 +24,7 @@ EYEBROW = "SOFTWARE ENGINEER"
 NAME = "OHEHA EBIBI"
 SUBTITLE = "Full-Stack Developer"
 STACK = "React  \u00b7  Node.js  \u00b7  Express  \u00b7  Hedera SDK"
-URL = "0hehaebib1.vercel.app"
+URL = "oheha.vercel.app"
 
 # --- brand, mirroring tailwind.config.js ----------------------------------
 BG = (28, 27, 33)  # bg-dark  #1C1B21
