@@ -198,19 +198,19 @@ export function MusicPlayer() {
 
   return (
     <>
-      <div className="fixed bottom-6 right-6 z-[9999] font-sans">
+      <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 md:bottom-6 md:right-6 z-[9999] font-sans">
         <AnimatePresence>
           {!isExpanded ? (
             // Minimized Floating Button
             <motion.button
               layoutId="music-player-container"
               onClick={() => setIsExpanded(true)}
-              className="flex items-center justify-center w-14 h-14 rounded-full bg-[#1C1B21]/90 backdrop-blur-xl border border-[#71ADDD]/30 text-[#71ADDD] shadow-2xl hover:border-[#71ADDD]/60 hover:text-white transition-all cursor-pointer relative group"
+              aria-label="Open music player"
+              className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-surface border border-accent/25 text-accent shadow-[0_12px_32px_-8px_rgb(0_0_0/0.6)] hover:border-accent/60 transition-colors duration-200 cursor-pointer relative group"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.94 }}
             >
               {/* Rotating record disk inside floating button */}
               <motion.div
@@ -227,7 +227,7 @@ export function MusicPlayer() {
 
               {/* Pulsing wiggling wave lines inside minimized player */}
               {isPlaying ? (
-                <svg width="24" height="16" viewBox="0 0 24 16" className="text-[#71ADDD] relative z-10">
+                <svg width="24" height="16" viewBox="0 0 24 16" className="text-accent relative z-10">
                   <motion.path
                     d="M0 8 Q6 2 12 14 T24 8"
                     fill="none"
@@ -250,7 +250,7 @@ export function MusicPlayer() {
                   />
                 </svg>
               ) : (
-                <svg width="24" height="16" viewBox="0 0 24 16" className="text-[#71ADDD]/50 relative z-10">
+                <svg width="24" height="16" viewBox="0 0 24 16" className="text-accent/50 relative z-10">
                   <path
                     d="M0 8 L24 8"
                     fill="none"
@@ -262,7 +262,7 @@ export function MusicPlayer() {
               )}
 
               {/* Tooltip */}
-              <span className="absolute bottom-16 right-0 scale-0 group-hover:scale-100 bg-[#1C1B21] border border-[#71ADDD]/20 text-[10px] uppercase tracking-wider font-bold text-[#71ADDD] py-1.5 px-3 rounded-lg shadow-xl transition-all duration-200 origin-bottom-right whitespace-nowrap">
+              <span className="absolute bottom-16 right-0 scale-0 group-hover:scale-100 bg-bg-dark border border-accent/20 label text-accent py-1.5 px-3 rounded-lg shadow-xl transition-transform duration-200 origin-bottom-right whitespace-nowrap">
                 {isLive ? "Audius Live Stream" : "Rob Woolridge Songs"}
               </span>
             </motion.button>
@@ -270,20 +270,17 @@ export function MusicPlayer() {
             // Expanded Glassmorphic Deck
             <motion.div
               layoutId="music-player-container"
-              className="w-76 sm:w-80 rounded-3xl bg-[#1C1B21]/95 backdrop-blur-2xl border border-[#71ADDD]/20 p-5 shadow-2xl text-white relative overflow-hidden"
+              className="w-[min(20rem,calc(100vw-2rem))] rounded-3xl bg-surface border border-accent/20 p-5 shadow-[0_24px_64px_-16px_rgb(0_0_0/0.7)] text-honeydew relative overflow-hidden"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
             >
-              {/* Decorative background glow */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#71ADDD]/10 rounded-full blur-3xl pointer-events-none" />
-
               {/* Header */}
-              <div className="flex justify-between items-center mb-4 border-b border-[#71ADDD]/10 pb-2.5">
+              <div className="flex justify-between items-center mb-4 border-b border-accent/10 pb-2.5">
                 <div className="flex items-center gap-2">
-                  <Music className="w-4 h-4 text-[#71ADDD]" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#71ADDD]">
+                  <Music className="w-4 h-4 text-accent" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
                     {isLive ? "Live API Streaming" : "Sound Portfolio"}
                   </span>
                 </div>
@@ -292,17 +289,19 @@ export function MusicPlayer() {
                     onClick={() => setShowTrackList(!showTrackList)}
                     className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                       showTrackList
-                        ? "bg-[#71ADDD]/20 text-[#71ADDD]"
-                        : "text-white/60 hover:text-white"
+                        ? "bg-accent/20 text-accent"
+                        : "text-honeydew/60 hover:text-honeydew"
                     }`}
                     title="Track List"
+                    aria-label="Track list"
                   >
                     <ListMusic className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setIsExpanded(false)}
-                    className="text-white/60 hover:text-white p-1.5 rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
+                    className="text-honeydew/60 hover:text-honeydew p-1.5 rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
                     title="Minimize"
+                    aria-label="Minimize player"
                   >
                     <Minimize2 className="w-4 h-4" />
                   </button>
@@ -315,7 +314,7 @@ export function MusicPlayer() {
                   {/* Track Details & Visualizer Block */}
                   <div className="flex items-center gap-4 py-2">
                     {/* Glowing circular vinyl art */}
-                    <div className="relative w-16 h-16 shrink-0 rounded-2xl bg-[#71ADDD]/10 border border-[#71ADDD]/10 flex items-center justify-center overflow-hidden shadow-inner">
+                    <div className="relative w-16 h-16 shrink-0 rounded-2xl bg-accent/10 border border-accent/10 flex items-center justify-center overflow-hidden shadow-inner">
                       <motion.div
                         animate={isPlaying ? { rotate: 360 } : { rotate: 0 }}
                         transition={{
@@ -323,14 +322,14 @@ export function MusicPlayer() {
                           duration: 8,
                           ease: "linear",
                         }}
-                        className="w-10 h-10 rounded-full border-2 border-[#71ADDD]/30 flex items-center justify-center"
+                        className="w-10 h-10 rounded-full border-2 border-accent/30 flex items-center justify-center"
                       >
-                        <Disc className="w-5 h-5 text-[#71ADDD]/70" />
+                        <Disc className="w-5 h-5 text-accent/70" />
                       </motion.div>
                       {/* Interactive subtle play badge (Waveform overlay) */}
                       {isPlaying && (
-                        <div className="absolute inset-0 bg-[#1C1B21]/60 flex items-center justify-center">
-                          <svg width="32" height="20" viewBox="0 0 32 20" className="text-[#71ADDD]">
+                        <div className="absolute inset-0 bg-bg-dark/60 flex items-center justify-center">
+                          <svg width="32" height="20" viewBox="0 0 32 20" className="text-accent">
                             <motion.path
                               d="M0 10 Q8 2 16 18 T32 10"
                               fill="none"
@@ -357,13 +356,13 @@ export function MusicPlayer() {
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h4 className="text-sm font-bold truncate text-white uppercase tracking-wide">
+                      <h4 className="text-sm font-bold truncate text-honeydew uppercase tracking-wide">
                         {currentTrack.title}
                       </h4>
-                      <p className="text-[10px] text-white/50 truncate mt-0.5">
+                      <p className="text-[10px] text-honeydew/50 truncate mt-0.5">
                         {currentTrack.artist}
                       </p>
-                      <span className="inline-block px-2 py-0.5 mt-1.5 rounded bg-[#71ADDD]/10 border border-[#71ADDD]/15 text-[8px] font-bold text-[#71ADDD] uppercase tracking-wider">
+                      <span className="inline-block px-2 py-0.5 mt-1.5 rounded bg-accent/10 border border-accent/15 text-[8px] font-bold text-accent uppercase tracking-wider">
                         {currentTrack.genre}
                       </span>
                     </div>
@@ -371,12 +370,12 @@ export function MusicPlayer() {
 
                   {/* Large dynamic dual-layer wave visualizer */}
                   <div className="h-12 w-full flex items-center justify-center overflow-hidden my-3 relative bg-white/5 rounded-2xl border border-white/5">
-                    <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="w-full h-full absolute inset-0">
+                    <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="w-full h-full absolute inset-0 text-accent">
                       {/* Layer 1 (Subtle Background Wave) */}
                       <motion.path
                         d="M0 20 Q25 20 50 20 T100 20"
                         fill="none"
-                        stroke="#71ADDD"
+                        stroke="currentColor"
                         strokeWidth="1"
                         opacity="0.25"
                         animate={isPlaying ? {
@@ -393,7 +392,7 @@ export function MusicPlayer() {
                       <motion.path
                         d="M0 20 Q25 20 50 20 T100 20"
                         fill="none"
-                        stroke="#71ADDD"
+                        stroke="currentColor"
                         strokeWidth="1.8"
                         opacity="0.8"
                         animate={isPlaying ? {
@@ -417,9 +416,9 @@ export function MusicPlayer() {
                       max={duration || 100}
                       value={currentTime}
                       onChange={handleSeek}
-                      className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#71ADDD] focus:outline-none"
+                      className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-accent focus:outline-none"
                     />
-                    <div className="flex justify-between items-center text-[10px] text-white/40 mt-1 font-semibold">
+                    <div className="flex justify-between items-center text-[10px] text-honeydew/40 mt-1 font-semibold">
                       <span>{formatTime(currentTime)}</span>
                       <span>{formatTime(duration)}</span>
                     </div>
@@ -429,13 +428,15 @@ export function MusicPlayer() {
                   <div className="flex justify-center items-center gap-6 mt-4">
                     <button
                       onClick={handlePrev}
-                      className="text-white/60 hover:text-white transition-colors cursor-pointer"
+                      aria-label="Previous track"
+                      className="text-honeydew/60 hover:text-honeydew transition-colors cursor-pointer"
                     >
                       <SkipBack className="w-5 h-5" />
                     </button>
                     <button
                       onClick={handlePlayPause}
-                      className="w-12 h-12 rounded-full bg-[#71ADDD] hover:bg-[#71ADDD]/90 text-[#1C1B21] flex items-center justify-center shadow-lg transition-transform active:scale-95 cursor-pointer"
+                      aria-label={isPlaying ? "Pause" : "Play"}
+                      className="w-12 h-12 rounded-full bg-accent hover:bg-accent/90 text-bg-dark flex items-center justify-center shadow-lg transition-transform active:scale-95 cursor-pointer"
                     >
                       {isPlaying ? (
                         <Pause className="w-5 h-5 fill-current" />
@@ -445,20 +446,22 @@ export function MusicPlayer() {
                     </button>
                     <button
                       onClick={handleNext}
-                      className="text-white/60 hover:text-white transition-colors cursor-pointer"
+                      aria-label="Next track"
+                      className="text-honeydew/60 hover:text-honeydew transition-colors cursor-pointer"
                     >
                       <SkipForward className="w-5 h-5" />
                     </button>
                   </div>
 
                   {/* Volume Slider */}
-                  <div className="flex items-center gap-2.5 mt-5 border-t border-[#71ADDD]/10 pt-3">
+                  <div className="flex items-center gap-2.5 mt-5 border-t border-accent/10 pt-3">
                     <button
                       onClick={() => setIsMuted(!isMuted)}
-                      className="text-white/50 hover:text-white transition-colors cursor-pointer"
+                      aria-label={isMuted ? "Unmute" : "Mute"}
+                      className="text-honeydew/50 hover:text-honeydew transition-colors cursor-pointer"
                     >
                       {isMuted || volume === 0 ? (
-                        <VolumeX className="w-4 h-4 text-red-400" />
+                        <VolumeX className="w-4 h-4 text-punch_red-600" />
                       ) : (
                         <Volume2 className="w-4 h-4" />
                       )}
@@ -473,7 +476,7 @@ export function MusicPlayer() {
                         setVolume(parseFloat(e.target.value));
                         setIsMuted(false);
                       }}
-                      className="flex-1 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#71ADDD] focus:outline-none"
+                      className="flex-1 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-accent focus:outline-none"
                     />
                   </div>
                 </div>
@@ -486,7 +489,7 @@ export function MusicPlayer() {
                       <button
                         onClick={loadLiveTrending}
                         disabled={loadingLive}
-                        className="flex-1 py-2 px-3 rounded-xl bg-[#71ADDD] text-[#1C1B21] text-[10px] font-bold uppercase tracking-wider hover:bg-[#71ADDD]/90 transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                        className="flex-1 py-2 px-3 rounded-xl bg-accent text-bg-dark text-[10px] font-bold uppercase tracking-wider hover:bg-accent/90 transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                       >
                         {loadingLive ? (
                           <RefreshCw className="w-3.5 h-3.5 animate-spin" />
@@ -498,9 +501,9 @@ export function MusicPlayer() {
                     ) : (
                       <button
                         onClick={restoreLocalTracks}
-                        className="flex-1 py-2 px-3 rounded-xl bg-white/10 border border-white/10 text-white text-[10px] font-bold uppercase tracking-wider hover:bg-white/15 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                        className="flex-1 py-2 px-3 rounded-xl bg-white/10 border border-white/10 text-honeydew text-[10px] font-bold uppercase tracking-wider hover:bg-white/15 transition-colors flex items-center justify-center gap-2 cursor-pointer"
                       >
-                        <Disc className="w-3.5 h-3.5 text-[#71ADDD]" />
+                        <Disc className="w-3.5 h-3.5 text-accent" />
                         Back to Rob's Catalog
                       </button>
                     )}
@@ -517,8 +520,8 @@ export function MusicPlayer() {
                         }}
                         className={`w-full text-left p-2.5 rounded-xl border flex items-center justify-between gap-3 transition-colors cursor-pointer ${
                           index === trackIndex
-                            ? "bg-[#71ADDD]/15 border-[#71ADDD]/30 text-[#71ADDD]"
-                            : "bg-white/5 border-transparent text-white/80 hover:bg-white/10 hover:text-white"
+                            ? "bg-accent/15 border-accent/30 text-accent"
+                            : "bg-white/5 border-transparent text-honeydew/80 hover:bg-white/10 hover:text-honeydew"
                         }`}
                       >
                         <div className="min-w-0">

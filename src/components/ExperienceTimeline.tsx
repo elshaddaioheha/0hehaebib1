@@ -7,43 +7,41 @@ export function ExperienceTimeline() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
 
   return (
-    <section ref={ref} id="experience" className="py-24 bg-bg-dark border-t border-accent/5">
+    <section ref={ref} id="experience" className="py-16 md:py-24 bg-bg-dark border-t border-accent/5">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <AnimatedHeading title="experience" direction="right-to-left" className="text-[12vw] mb-16" />
-          <div className="grid gap-12">
+          <AnimatedHeading
+            title="experience"
+            direction="right-to-left"
+            className="text-[18vw] md:text-[12vw] leading-[0.9] mb-8 md:mb-16"
+          />
+          <div className="border-t border-accent/10">
             {experiences.map((exp) => (
-              <div
+              <article
                 key={`${exp.company}-${exp.role}`}
-                className="group border-b border-accent/10 pb-12 hover:border-accent transition-colors duration-500"
+                className="grid md:grid-cols-[14rem_1fr] gap-x-10 gap-y-3 py-8 md:py-12 border-b border-accent/10 transition-colors duration-200 hover:border-accent/30"
               >
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                  <div className="w-full md:w-auto overflow-hidden">
-                    <AnimatedHeading
-                      title={exp.role}
-                      direction="left-to-right"
-                      tag="h3"
-                      className="text-3xl md:text-4xl text-accent whitespace-normal"
-                    />
-                    <p className="text-lg text-accent/60 font-bold uppercase mt-2">
-                      {exp.company} • {exp.location}
-                    </p>
-                  </div>
-                  <span className="text-accent font-bold opacity-40">{exp.period}</span>
+                <div className="flex md:flex-col flex-wrap items-baseline gap-x-3 gap-y-2 md:pt-2">
+                  <span className="label text-accent/80 tabular-nums">{exp.period}</span>
+                  <span className="label text-cerulean-600">{exp.location}</span>
                 </div>
-                <p className="mt-6 text-accent/70 text-lg leading-relaxed max-w-4xl">{exp.desc}</p>
-                {exp.highlights ? (
-                  <ul className="mt-4 list-disc list-inside text-accent/70 space-y-2">
-                    {exp.highlights.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                ) : null}
-              </div>
+                <div>
+                  <h3 className="font-display text-2xl md:text-4xl leading-tight text-accent">{exp.role}</h3>
+                  <p className="mt-1 mb-0 text-sm md:text-base font-semibold text-honeydew/80">{exp.company}</p>
+                  <p className="mt-4 mb-0 text-accent/70 text-base md:text-lg leading-relaxed max-w-3xl">{exp.desc}</p>
+                  {exp.highlights ? (
+                    <ul className="marker-list mt-4 text-sm md:text-base text-accent/70 max-w-3xl">
+                      {exp.highlights.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              </article>
             ))}
           </div>
         </motion.div>

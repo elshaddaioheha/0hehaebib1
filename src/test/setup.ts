@@ -18,3 +18,6 @@ Object.defineProperty(globalThis, "IntersectionObserver", {
 	configurable: true,
 	value: MockIntersectionObserver,
 });
+
+// jsdom has no canvas; decorative canvases just skip drawing.
+HTMLCanvasElement.prototype.getContext = (() => null) as typeof HTMLCanvasElement.prototype.getContext;

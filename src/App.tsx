@@ -12,7 +12,7 @@ import { WorksSection } from "./components/WorksSection";
 
 export default function App() {
   return (
-    <div className="bg-bg-dark min-h-screen text-accent selection:bg-accent selection:text-bg-dark">
+    <div className="bg-bg-dark min-h-screen text-accent">
       <Hero />
       <Navigation />
       <AboutSection />

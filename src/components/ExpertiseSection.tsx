@@ -7,26 +7,36 @@ export function ExpertiseSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
 
   return (
-    <section ref={ref} id="expertise" className="py-24 bg-bg-dark border-t border-accent/5">
+    <section ref={ref} id="expertise" className="py-16 md:py-24 bg-bg-dark border-t border-accent/5">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <AnimatedHeading title="expertise" direction="left-to-right" className="text-[12vw] mb-16 text-right" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {expertiseItems.map((item) => (
-              <div
+          <AnimatedHeading
+            title="expertise"
+            direction="left-to-right"
+            className="text-[18vw] md:text-[12vw] leading-[0.9] mb-8 md:mb-16 md:text-right"
+          />
+          <ol className="border-t border-accent/10">
+            {expertiseItems.map((item, i) => (
+              <li
                 key={item.title}
-                className="p-8 rounded-[32px] bg-accent/5 border border-accent/10 hover:border-accent/30 transition-all duration-300 group"
+                className="group grid grid-cols-[2.25rem_1fr] md:grid-cols-[5rem_minmax(0,24rem)_1fr] gap-x-3 md:gap-x-10 gap-y-2 py-6 md:py-8 border-b border-accent/10 transition-colors duration-200 hover:bg-accent/[0.03]"
               >
-                <div className="w-12 h-1 px-4 bg-accent/20 mb-6 group-hover:w-20 transition-all duration-300" />
-                <h3 className="text-2xl font-display text-accent mb-4">{item.title}</h3>
-                <p className="text-accent/60 leading-relaxed">{item.desc}</p>
-              </div>
+                <span className="label text-punch_red-600 tabular-nums pt-1.5 md:pl-2">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display text-xl md:text-3xl leading-tight text-accent transition-transform duration-200 group-hover:translate-x-1">
+                  {item.title}
+                </h3>
+                <p className="col-start-2 md:col-start-3 text-accent/60 leading-relaxed mb-0 md:pt-1">
+                  {item.desc}
+                </p>
+              </li>
             ))}
-          </div>
+          </ol>
         </motion.div>
       </div>
     </section>

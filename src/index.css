@@ -3,12 +3,25 @@
 @tailwind utilities;
 
 :root {
-    --bg-dark: #1C1B21;
-    --accent: #71ADDD;
-    --text-off-white: #E2E8F0;
-    --text-dim: #94A3B8;
+    /* Palette roles. Red is reserved for small signals: markers, live state, the caret, selection. */
+    --bg-dark: #0c1623;        /* oxford navy 200 */
+    --surface: #122035;        /* oxford navy 300 */
+    --accent: #a8dadc;         /* frosted blue */
+    --signal: #e63946;         /* punch red */
+    --text-off-white: #f1faee; /* honeydew */
+    --text-dim: #88b1cb;       /* cerulean 700 */
     --font-display: 'Anton', sans-serif;
     --font-body: 'Outfit', sans-serif;
+
+    --accent-rgb: 168 218 220;
+    --ink-rgb: 12 22 35;
+    --signal-rgb: 230 57 70;
+
+    /* Motion tokens: one duration for state changes, a shorter one for presses */
+    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur: 200ms;
+    --dur-press: 100ms;
 }
 
 * {
@@ -24,6 +37,19 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: var(--signal);
+    color: var(--text-off-white);
+}
+
+/* One focus treatment everywhere: the element's own text colour always contrasts with its surface */
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 .font-display {
@@ -49,78 +75,249 @@ p {
 
 @media (max-width: 768px) {
     .container {
-        padding: 0 1.5rem;
+        padding: 0 1.25rem;
     }
 }
 
-.accent-pattern {
-    background-color: var(--accent);
-    background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgba(0, 0, 0, 0.03) 15px, rgba(0, 0, 0, 0.03) 16px);
-}
+@layer components {
+    /* Small uppercase metadata: years, categories, chips. Never below 11px. */
+    .label {
+        font-size: 0.6875rem;
+        line-height: 1.2;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+    }
 
-.btn-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid currentColor;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+    @media (min-width: 768px) {
+        .label {
+            font-size: 0.75rem;
+        }
+    }
 
-.btn-circle:hover {
-    background: var(--text-light);
-    color: var(--bg-dark);
-}
+    .accent-pattern {
+        background-color: var(--accent);
+        background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgb(var(--ink-rgb) / 0.04) 15px, rgb(var(--ink-rgb) / 0.04) 16px);
+    }
 
-.btn-pill {
-    padding: 0.75rem 2rem;
-    border-radius: 999px;
-    border: 1px solid currentColor;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.875rem;
-    transition: all 0.3s ease;
-}
+    /* Buttons */
+    .btn-pill {
+        position: relative;
+        min-height: 44px;
+        padding: 0.75rem 1.75rem;
+        border-radius: 999px;
+        border: 1px solid currentColor;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8125rem;
+        letter-spacing: 0.04em;
+        transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease),
+            border-color var(--dur) var(--ease), box-shadow var(--dur-press) var(--ease), scale var(--dur-press) var(--ease);
+    }
 
-.btn-pill:hover {
-    background: currentColor;
-    color: var(--bg-dark);
-}
+    /* Arrow icons nudge toward where the link goes */
+    .btn-pill svg,
+    .nudge svg {
+        transition: translate var(--dur) var(--ease);
+    }
 
-.work-item {
-    padding: 4rem 0;
-    border-bottom: 1px solid rgba(113, 173, 221, 0.1);
-}
+    /* Solid navy button for light surfaces: tinted, layered shadow instead of a flat drop shadow */
+    .btn-solid {
+        box-shadow:
+            inset 0 -6px 12px rgb(var(--accent-rgb) / 0.1),
+            0 2px 4px rgb(var(--ink-rgb) / 0.18),
+            0 1px 1px rgb(var(--ink-rgb) / 0.16),
+            0 0.5px 0.5px rgb(var(--ink-rgb) / 0.2);
+    }
 
-.work-item.featured {
-    background-color: var(--accent);
-    color: var(--bg-dark);
-    margin: 1rem 0;
-    padding: 4rem;
-    border-radius: 60px;
-    position: relative;
-    overflow: hidden;
-}
+    .btn-solid:active {
+        box-shadow: inset 0 -2px 6px rgb(var(--accent-rgb) / 0.08), 0 1px 1px rgb(var(--ink-rgb) / 0.2);
+    }
 
-@media (min-width: 768px) {
+    /* Press feedback, scaled to the size of the control: large surfaces move less */
+    .press {
+        transition-property: background-color, color, border-color, opacity, box-shadow, scale;
+        transition-duration: var(--dur), var(--dur), var(--dur), var(--dur), var(--dur-press), var(--dur-press);
+        transition-timing-function: var(--ease);
+    }
+
+    .press:active {
+        scale: 0.96;
+    }
+
+    .btn-pill:active {
+        scale: 0.985;
+    }
+
+    @media (hover: hover) {
+        .btn-pill:hover {
+            background: currentColor;
+            color: var(--bg-dark);
+        }
+
+        .btn-solid:hover {
+            background: #172b46; /* oxford navy 400 */
+            color: var(--accent);
+        }
+
+        .btn-pill:hover svg:last-child,
+        .nudge:hover svg:last-child {
+            translate: 2px -2px;
+        }
+    }
+
+    /* Project rows */
+    .work-item {
+        padding: 2.5rem 0;
+        border-bottom: 1px solid rgb(var(--accent-rgb) / 0.1);
+    }
+
     .work-item.featured {
-        margin: 1rem -4rem;
+        background-color: var(--accent);
+        color: var(--bg-dark);
+        margin: 1rem 0;
+        padding: 2rem 1.5rem;
+        border-radius: 28px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+        .work-item {
+            padding: 4rem 0;
+        }
+
+        .work-item.featured {
+            margin: 1rem -4rem;
+            padding: 4rem;
+            border-radius: 60px;
+        }
+    }
+
+    .work-item.featured::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgb(var(--ink-rgb) / 0.04) 15px, rgb(var(--ink-rgb) / 0.04) 16px);
+        pointer-events: none;
+    }
+
+    /* Lists marked with a short red dash instead of default bullets */
+    .marker-list {
+        list-style: none;
+        display: grid;
+        gap: 0.6rem;
+    }
+
+    .marker-list li {
+        position: relative;
+        padding-left: 1.25rem;
+    }
+
+    .marker-list li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.72em;
+        width: 0.55rem;
+        height: 2px;
+        border-radius: 1px;
+        background: var(--signal);
+    }
+
+    /* Border drawn inside the box so hover states never shift layout */
+    .inside-border {
+        position: relative;
+    }
+
+    .inside-border::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        box-shadow: inset 0 0 0 1px rgb(var(--accent-rgb) / 0.12);
+        transition: box-shadow var(--dur) var(--ease);
+        pointer-events: none;
+    }
+
+    /* Underline that grows from the left */
+    .link-underline {
+        background-image: linear-gradient(currentColor, currentColor);
+        background-size: 0% 1px;
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        transition: background-size var(--dur) var(--ease-out), color var(--dur) var(--ease), opacity var(--dur) var(--ease);
+    }
+
+    .link-underline:focus-visible,
+    .group:focus-visible .link-underline {
+        background-size: 100% 1px;
+    }
+
+    @media (hover: hover) {
+        .inside-border:hover::before {
+            box-shadow: inset 0 0 0 1px rgb(var(--accent-rgb) / 0.32);
+        }
+
+        .link-underline:hover,
+        .group:hover .link-underline {
+            background-size: 100% 1px;
+        }
+    }
+
+    /* Typing caret: a hard blink, like a real terminal cursor, not a fade */
+    .caret {
+        display: inline-block;
+        width: 2px;
+        height: 1em;
+        margin-left: 2px;
+        vertical-align: -0.12em;
+        background: var(--signal);
+        animation: caret-blink 1s steps(1) infinite;
+    }
+
+    /* Live / availability dot */
+    .live-dot {
+        position: relative;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--signal);
+    }
+
+    .live-dot::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: inherit;
+        animation: live-ping 2s var(--ease-out) infinite;
+    }
+
+    @keyframes caret-blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes live-ping {
+        0% {
+            opacity: 0.55;
+            transform: scale(1);
+        }
+
+        70%,
+        100% {
+            opacity: 0;
+            transform: scale(2.6);
+        }
     }
 }
 
-.work-item.featured::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgba(0, 0, 0, 0.03) 15px, rgba(0, 0, 0, 0.03) 16px);
-    pointer-events: none;
-}
-
+/* Gallery (GallerySection) */
 .gallery-img {
     border-radius: 40px;
     width: 100%;
@@ -140,34 +337,12 @@ p {
     overflow: hidden;
 }
 
-/* Custom Utilities */
-.text-outline {
-    -webkit-text-stroke: 1px currentColor;
-    color: transparent;
-}
-
-/* Rotating Gear Badge */
-.gear-badge {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.gear-badge svg {
-    width: 100%;
-    height: 100%;
-    animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
