@@ -24,20 +24,20 @@ export function AboutSection() {
           </div>
 
           <div className="md:w-2/3 flex flex-col gap-6 md:gap-8 md:pl-20">
-            <p className="text-2xl md:text-3xl text-honeydew leading-[1.25] font-medium max-w-[55ch] mb-0">
-              I engineer <span className="text-accent">scalable JavaScript architectures</span> and{" "}
-              <span className="text-accent">blockchain integrations</span>.
+            <p className="text-2xl md:text-3xl text-fg leading-[1.25] font-medium max-w-[55ch] mb-0">
+              I engineer <span className="text-highlight">scalable JavaScript architectures</span> and{" "}
+              <span className="text-highlight">blockchain integrations</span>.
             </p>
-            <p className="text-base md:text-lg text-honeydew/75 leading-relaxed max-w-[60ch] mb-0">
+            <p className="text-base md:text-lg text-fg/75 leading-relaxed max-w-[60ch] mb-0">
               I specialize in building robust, high-performance ecosystems using React, Node.js, and
               Express. Beyond standard web development, I have worked on blockchain development, specifically
               integrating the Hedera Hashgraph SDK to build secure, decentralized applications.
             </p>
-            <p className="text-base md:text-lg text-honeydew/75 leading-relaxed max-w-[60ch] mb-0">
+            <p className="text-base md:text-lg text-fg/75 leading-relaxed max-w-[60ch] mb-0">
               My background in data analytics (Google and Telus AI) drives a commitment to data integrity and
               system optimization. This analytical mindset balances my work as a sound designer.
             </p>
-            <p className="text-base md:text-lg text-honeydew/75 leading-relaxed max-w-[60ch] mb-0">
+            <p className="text-base md:text-lg text-fg/75 leading-relaxed max-w-[60ch] mb-0">
               A proactive engineer grounded in rigorous CS fundamentals from Harvard CS50, I continue evolving
               through open source contributions and real-world product delivery.
             </p>
@@ -45,7 +45,7 @@ export function AboutSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-4">
               {skillCategories.map((cat) => (
                 <div key={cat.category}>
-                  <h4 className="label text-cerulean-700 mb-3">
+                  <h4 className="label text-muted mb-3">
                     {cat.category}
                   </h4>
                   <div className="flex flex-wrap gap-2">

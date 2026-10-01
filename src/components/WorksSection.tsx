@@ -23,11 +23,11 @@ export function WorksSection() {
   return (
     <section ref={ref} id="works" className="relative py-16 md:py-24 bg-bg-dark border-t border-accent/5 overflow-hidden">
       <Decoration
-        className="absolute inset-x-0 top-0 h-[420px] w-full"
-        color="168 218 220"
+        className="absolute inset-x-0 top-0 h-[520px] w-full"
+        color="--c-accent"
         fade="top"
-        intensity={0.14}
-        speed={0.6}
+        intensity={0.34}
+        speed={0.8}
       />
       <div className="container relative">
         <motion.div
@@ -38,17 +38,17 @@ export function WorksSection() {
         >
           <div className="w-full md:w-auto">
             <AnimatedHeading title="works" direction="left-to-right" className="text-[18vw] md:text-[12vw] leading-[0.85]" />
-            <div className="mt-6 md:mt-8 flex flex-wrap gap-2 md:gap-3">
+            <div className="mt-6 md:mt-8 flex flex-wrap gap-1 md:gap-2">
               {filterOptions.map((opt) => {
                 const active = filter === opt.value;
                 return (
                   <button
                     key={opt.value}
                     onClick={() => setFilter(opt.value)}
-                    className={`relative min-h-[44px] px-4 md:px-5 rounded-full label press cursor-pointer ${
+                    className={`halo relative min-h-[52px] px-4 md:px-5 rounded-full label press cursor-pointer ${
                       active
                         ? "text-bg-dark"
-                        : "text-accent inside-border"
+                        : "text-accent bg-surface inside-border tint-hover"
                     }`}
                   >
                     {active && (

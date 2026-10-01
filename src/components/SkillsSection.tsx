@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useRevealInView } from "../hooks/useRevealInView";
 import { AnimatedHeading } from "./AnimatedHeading";
+import { Decoration } from "./Decoration";
 import {
   DockerIcon,
   ExpressIcon,
@@ -31,8 +32,15 @@ export function SkillsSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
 
   return (
-    <section ref={ref} id="skills" className="py-16 md:py-24 bg-bg-dark border-t border-accent/5">
-      <div className="container">
+    <section ref={ref} id="skills" className="relative py-16 md:py-24 bg-bg-dark border-t border-accent/5 overflow-hidden">
+      <Decoration
+        className="absolute inset-x-0 bottom-0 h-[300px] w-full"
+        color="--c-accent"
+        fade="bottom"
+        intensity={0.3}
+        speed={0.7}
+      />
+      <div className="container relative">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
@@ -51,12 +59,12 @@ export function SkillsSection() {
             {skills.map((skill, i) => (
               <div
                 key={skill.label}
-                className={`inside-border flex items-center gap-3 px-3.5 md:px-4 py-3 rounded-xl md:rounded-2xl bg-accent/5 text-accent font-semibold hover:bg-accent/10 transition-colors duration-200 group ${
+                className={`inside-border spotlight press flex items-center gap-3 px-3.5 md:px-4 py-3 rounded-xl md:rounded-2xl bg-surface tint-hover text-accent font-semibold group ${
                   isInView ? "animate-fade-in" : "opacity-0"
                 }`}
                 style={{ animationDelay: `${i * 40}ms` }}
               >
-                <skill.Icon className="w-5 h-5 shrink-0 transition-transform duration-200 group-hover:-rotate-6 group-hover:scale-110" aria-hidden />
+                <skill.Icon className="w-5 h-5 shrink-0 transition-transform duration-200 group-hover:-rotate-12 group-hover:scale-125" aria-hidden />
                 <span className="text-xs md:text-sm uppercase tracking-wide truncate">{skill.label}</span>
               </div>
             ))}

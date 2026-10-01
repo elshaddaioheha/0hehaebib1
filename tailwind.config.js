@@ -11,19 +11,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Semantic roles used across the components
-        'bg-dark': {
-          DEFAULT: '#0c1623', // oxford_navy-200
-        },
-        'accent': {
-          DEFAULT: '#a8dadc', // frosted_blue
-        },
-        'surface': {
-          DEFAULT: '#122035', // oxford_navy-300
-        },
-        'signal': {
-          DEFAULT: '#e63946', // punch_red: markers, live state, selection only
-        },
+        // Page roles: switch with the theme (values live in index.css under [data-theme])
+        'bg-dark': 'rgb(var(--c-bg) / <alpha-value>)', // page background
+        'accent': 'rgb(var(--c-accent) / <alpha-value>)', // headings, text and hairlines on the page
+        'fg': 'rgb(var(--c-fg) / <alpha-value>)', // long-form body text
+        'muted': 'rgb(var(--c-muted) / <alpha-value>)', // secondary labels
+        'highlight': 'rgb(var(--c-highlight) / <alpha-value>)', // inline emphasis in prose
+        'surface': 'rgb(var(--c-surface) / <alpha-value>)', // floating panels
+        'signal': 'rgb(var(--c-signal) / <alpha-value>)', // punch red: markers, numbering, live state only
+
+        // Card roles: the frosted hero/featured surfaces look the same in both themes
+        'card': '#a8dadc', // frosted_blue
+        'ink': '#0c1623', // oxford_navy-200, text on cards
 
         // Source palette
         'punch_red': { DEFAULT: '#e63946', 100: '#33060a', 200: '#660d14', 300: '#99131e', 400: '#cb1928', 500: '#e63946', 600: '#eb5f6b', 700: '#f08790', 800: '#f5afb5', 900: '#fad7da' },

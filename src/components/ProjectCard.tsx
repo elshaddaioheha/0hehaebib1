@@ -14,7 +14,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <motion.div
-      className={`work-item ${isBlue ? "featured" : ""} group`}
+      className={`work-item spotlight ${isBlue ? "featured text-ink lift" : ""} group`}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -29,8 +29,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 title={project.title}
                 direction={isBlue ? "left-to-right" : "right-to-left"}
                 tag="h4"
-                className={`text-[2rem] leading-[1] md:text-5xl group-hover:translate-x-1 transition-transform duration-200 whitespace-normal ${
-                  isBlue ? "text-bg-dark" : "text-accent"
+                className={`text-[2rem] leading-[1] md:text-5xl group-hover:translate-x-2 transition-transform duration-300 ease-out whitespace-normal ${
+                  isBlue ? "text-ink" : "text-accent"
                 }`}
               />
             </div>
@@ -44,7 +44,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   key={tech}
                   className={`label px-2.5 py-1.5 rounded-md ${
                     isBlue
-                      ? "bg-bg-dark/[0.08] text-bg-dark"
+                      ? "bg-ink/[0.08] text-ink"
                       : "inside-border bg-accent/5 text-accent"
                   }`}
                 >
@@ -56,7 +56,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           {project.achievements?.length ? (
             <ul className={`marker-list text-sm md:text-[0.9375rem] leading-relaxed ${
-              isBlue ? "text-bg-dark/85" : "text-accent/70"
+              isBlue ? "text-ink/85" : "text-accent/70"
             }`}>
               {project.achievements.map((item) => (
                 <li key={item}>{item}</li>
@@ -66,7 +66,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           {project.media ? (
             <div className={`mt-2 md:mt-4 rounded-2xl md:rounded-3xl overflow-hidden border bg-black/5 ${
-              isBlue ? "border-bg-dark/10" : "border-accent/15"
+              isBlue ? "border-ink/10" : "border-accent/15"
             }`}>
               <img
                 src={project.media.src}
@@ -87,8 +87,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             rel="noopener noreferrer"
             className={`btn-pill px-3 md:px-7 text-xs md:text-[0.8125rem] w-full md:w-auto justify-center ${
               isBlue
-                ? "btn-solid bg-bg-dark text-accent border-bg-dark"
-                : "text-accent border-accent/30 hover:border-accent"
+                ? "btn-solid bg-ink text-card border-ink"
+                : "bg-surface text-accent border-accent/30 hover:border-accent"
             }`}
           >
             View Live <ArrowUpRight size={16} />
@@ -100,9 +100,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             className={`btn-pill px-3 md:px-7 text-xs md:text-[0.8125rem] w-full md:w-auto justify-center gap-2 ${
               project.repo
                 ? isBlue
-                  ? "text-bg-dark border-bg-dark/30 hover:bg-bg-dark hover:text-accent"
-                  : "text-accent border-accent/30 hover:border-accent"
-                : "text-accent/40 border-accent/10 cursor-not-allowed"
+                  ? "bg-frosted_blue-700 text-ink border-ink/30 hover:bg-ink hover:text-card"
+                  : "bg-surface text-accent border-accent/30 hover:border-accent"
+                : "bg-surface text-accent/40 border-accent/10 cursor-not-allowed"
             }`}
             aria-disabled={!project.repo}
           >
@@ -112,7 +112,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             <a
               href={project.demo}
               className={`nudge press label col-span-2 min-h-[44px] flex items-center justify-center md:justify-end gap-2 ${
-                isBlue ? "text-bg-dark/60 hover:text-bg-dark" : "opacity-40 hover:opacity-100"
+                isBlue ? "text-ink/60 hover:text-ink" : "opacity-40 hover:opacity-100"
               }`}
             >
               Watch Video Demo <ArrowRight size={12} />

@@ -2,20 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Colour roles as RGB channels so Tailwind's /opacity modifiers work on them.
+ * Page roles switch with [data-theme] (set before first paint by the script in index.html).
+ * Card roles (--card, --ink) never switch: the frosted hero and featured surfaces are the brand.
+ * Red is reserved for small signals: markers, numbering, live state, the caret, selection.
+ */
+:root,
+:root[data-theme="dark"] {
+    --c-bg: 12 22 35;          /* oxford navy 200 */
+    --c-accent: 168 218 220;   /* frosted blue */
+    --c-fg: 241 250 238;       /* honeydew */
+    --c-muted: 136 177 203;    /* cerulean 700 */
+    --c-highlight: 168 218 220;
+    --c-surface: 18 32 53;     /* oxford navy 300 */
+    --c-signal: 235 95 107;    /* punch red 600 */
+    color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+    --c-bg: 241 250 238;       /* honeydew */
+    --c-accent: 12 22 35;      /* oxford navy 200 */
+    --c-fg: 12 22 35;
+    --c-muted: 55 98 125;      /* cerulean 400 */
+    --c-highlight: 49 90 147;  /* oxford navy 600 */
+    --c-surface: 252 254 252;  /* honeydew 900 */
+    --c-signal: 203 25 40;     /* punch red 400 */
+    color-scheme: light;
+}
+
 :root {
-    /* Palette roles. Red is reserved for small signals: markers, live state, the caret, selection. */
-    --bg-dark: #0c1623;        /* oxford navy 200 */
-    --surface: #122035;        /* oxford navy 300 */
-    --accent: #a8dadc;         /* frosted blue */
-    --signal: #e63946;         /* punch red */
-    --text-off-white: #f1faee; /* honeydew */
-    --text-dim: #88b1cb;       /* cerulean 700 */
+    --card: 168 218 220;       /* frosted blue */
+    --ink: 12 22 35;           /* oxford navy 200 */
+    --ink-raised: 23 43 70;    /* oxford navy 400 */
+    --honeydew: 241 250 238;
+
     --font-display: 'Anton', sans-serif;
     --font-body: 'Outfit', sans-serif;
-
-    --accent-rgb: 168 218 220;
-    --ink-rgb: 12 22 35;
-    --signal-rgb: 230 57 70;
 
     /* Motion tokens: one duration for state changes, a shorter one for presses */
     --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -31,8 +54,8 @@
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-off-white);
+    background-color: rgb(var(--c-bg));
+    color: rgb(var(--c-fg));
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
@@ -41,8 +64,15 @@ body {
 }
 
 ::selection {
-    background: var(--signal);
-    color: var(--text-off-white);
+    background: rgb(var(--c-signal));
+    color: rgb(var(--honeydew));
+}
+
+/* Theme switch: a short cross-fade via the View Transitions API where supported */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 280ms;
+    animation-timing-function: var(--ease);
 }
 
 /* One focus treatment everywhere: the element's own text colour always contrasts with its surface */
@@ -96,8 +126,8 @@ p {
     }
 
     .accent-pattern {
-        background-color: var(--accent);
-        background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgb(var(--ink-rgb) / 0.04) 15px, rgb(var(--ink-rgb) / 0.04) 16px);
+        background-color: rgb(var(--card));
+        background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgb(var(--ink) / 0.04) 15px, rgb(var(--ink) / 0.04) 16px);
     }
 
     /* Buttons */
@@ -115,69 +145,107 @@ p {
         font-size: 0.8125rem;
         letter-spacing: 0.04em;
         transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease),
-            border-color var(--dur) var(--ease), box-shadow var(--dur-press) var(--ease), scale var(--dur-press) var(--ease);
+            border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), scale var(--dur-press) var(--ease),
+            translate var(--dur) var(--ease-out);
     }
 
     /* Arrow icons nudge toward where the link goes */
     .btn-pill svg,
     .nudge svg {
-        transition: translate var(--dur) var(--ease);
+        transition: translate var(--dur) var(--ease-out);
+    }
+
+    /*
+     * Controls that sit on top of the animated fields: an opaque face plus a translucent ring that blurs
+     * whatever moves behind it, so the edge stays crisp against the motion. The ring is the element's own
+     * border (background clipped to the padding box), so no wrapper element is needed.
+     */
+    .halo {
+        --halo: var(--c-bg);
+        border: 6px solid rgb(var(--halo) / 0.45);
+        background-clip: padding-box;
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+    }
+
+    /* Ring tinted for the frosted cards */
+    .halo-card {
+        --halo: var(--card);
+    }
+
+    .halo.btn-pill {
+        min-height: 56px;
     }
 
     /* Solid navy button for light surfaces: tinted, layered shadow instead of a flat drop shadow */
     .btn-solid {
         box-shadow:
-            inset 0 -6px 12px rgb(var(--accent-rgb) / 0.1),
-            0 2px 4px rgb(var(--ink-rgb) / 0.18),
-            0 1px 1px rgb(var(--ink-rgb) / 0.16),
-            0 0.5px 0.5px rgb(var(--ink-rgb) / 0.2);
+            inset 0 -6px 12px rgb(var(--card) / 0.1),
+            0 2px 4px rgb(var(--ink) / 0.18),
+            0 1px 1px rgb(var(--ink) / 0.16),
+            0 0.5px 0.5px rgb(var(--ink) / 0.2);
     }
 
     .btn-solid:active {
-        box-shadow: inset 0 -2px 6px rgb(var(--accent-rgb) / 0.08), 0 1px 1px rgb(var(--ink-rgb) / 0.2);
+        box-shadow: inset 0 -2px 6px rgb(var(--card) / 0.08), 0 1px 1px rgb(var(--ink) / 0.2);
     }
 
     /* Press feedback, scaled to the size of the control: large surfaces move less */
     .press {
-        transition-property: background-color, color, border-color, opacity, box-shadow, scale;
-        transition-duration: var(--dur), var(--dur), var(--dur), var(--dur), var(--dur-press), var(--dur-press);
+        transition-property: background-color, color, border-color, opacity, box-shadow, scale, translate;
+        transition-duration: var(--dur), var(--dur), var(--dur), var(--dur), var(--dur-press), var(--dur-press), var(--dur);
         transition-timing-function: var(--ease);
     }
 
     .press:active {
-        scale: 0.96;
+        scale: 0.94;
     }
 
     .btn-pill:active {
-        scale: 0.985;
+        scale: 0.97;
+        translate: 0 0;
     }
 
     @media (hover: hover) {
         .btn-pill:hover {
             background: currentColor;
-            color: var(--bg-dark);
+            color: rgb(var(--c-bg));
+            translate: 0 -2px;
+        }
+
+        .press:hover {
+            translate: 0 -2px;
         }
 
         .btn-solid:hover {
-            background: #172b46; /* oxford navy 400 */
-            color: var(--accent);
+            background: rgb(var(--ink-raised));
+            color: rgb(var(--card));
+            box-shadow:
+                inset 0 -6px 12px rgb(var(--card) / 0.14),
+                0 10px 20px -8px rgb(var(--ink) / 0.45),
+                0 2px 4px rgb(var(--ink) / 0.2);
         }
 
         .btn-pill:hover svg:last-child,
         .nudge:hover svg:last-child {
-            translate: 2px -2px;
+            translate: 3px -3px;
+        }
+
+        .press:active,
+        .btn-pill:active {
+            translate: 0 0;
         }
     }
 
     /* Project rows */
     .work-item {
         padding: 2.5rem 0;
-        border-bottom: 1px solid rgb(var(--accent-rgb) / 0.1);
+        border-bottom: 1px solid rgb(var(--c-accent) / 0.1);
     }
 
     .work-item.featured {
-        background-color: var(--accent);
-        color: var(--bg-dark);
+        background-color: rgb(var(--card));
+        color: rgb(var(--ink));
         margin: 1rem 0;
         padding: 2rem 1.5rem;
         border-radius: 28px;
@@ -201,7 +269,7 @@ p {
         content: '';
         position: absolute;
         inset: 0;
-        background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgb(var(--ink-rgb) / 0.04) 15px, rgb(var(--ink-rgb) / 0.04) 16px);
+        background-image: repeating-linear-gradient(135deg, transparent, transparent 15px, rgb(var(--ink) / 0.04) 15px, rgb(var(--ink) / 0.04) 16px);
         pointer-events: none;
     }
 
@@ -225,7 +293,7 @@ p {
         width: 0.55rem;
         height: 2px;
         border-radius: 1px;
-        background: var(--signal);
+        background: rgb(var(--c-signal));
     }
 
     /* Border drawn inside the box so hover states never shift layout */
@@ -238,15 +306,15 @@ p {
         position: absolute;
         inset: 0;
         border-radius: inherit;
-        box-shadow: inset 0 0 0 1px rgb(var(--accent-rgb) / 0.12);
+        box-shadow: inset 0 0 0 1px rgb(var(--c-accent) / 0.12);
         transition: box-shadow var(--dur) var(--ease);
         pointer-events: none;
     }
 
     /* Underline that grows from the left */
     .link-underline {
-        background-image: linear-gradient(currentColor, currentColor);
-        background-size: 0% 1px;
+        background-image: linear-gradient(rgb(var(--c-signal)), rgb(var(--c-signal)));
+        background-size: 0% 2px;
         background-position: 0 100%;
         background-repeat: no-repeat;
         transition: background-size var(--dur) var(--ease-out), color var(--dur) var(--ease), opacity var(--dur) var(--ease);
@@ -254,17 +322,68 @@ p {
 
     .link-underline:focus-visible,
     .group:focus-visible .link-underline {
-        background-size: 100% 1px;
+        background-size: 100% 2px;
     }
 
     @media (hover: hover) {
         .inside-border:hover::before {
-            box-shadow: inset 0 0 0 1px rgb(var(--accent-rgb) / 0.32);
+            box-shadow: inset 0 0 0 1px rgb(var(--c-accent) / 0.45);
         }
 
         .link-underline:hover,
         .group:hover .link-underline {
-            background-size: 100% 1px;
+            background-size: 100% 2px;
+        }
+    }
+
+    /*
+     * Cursor spotlight: a soft glow that follows the pointer across a surface.
+     * --mx/--my are set by useSpotlight(); the glow sits behind the content (isolation + z-index -1).
+     */
+    .spotlight {
+        position: relative;
+        isolation: isolate;
+        --spot: rgb(var(--c-accent) / 0.09);
+    }
+
+    :root[data-theme="light"] .spotlight {
+        --spot: rgb(var(--card) / 0.6);
+    }
+
+    .work-item.featured.spotlight {
+        --spot: rgb(255 255 255 / 0.5);
+    }
+
+    .spotlight::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: inherit;
+        background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), var(--spot), transparent 65%);
+        opacity: 0;
+        transition: opacity 300ms var(--ease);
+        pointer-events: none;
+    }
+
+    /* Surfaces that rise toward the cursor */
+    .lift {
+        transition: translate 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+    }
+
+    @media (hover: hover) {
+        .spotlight:hover::after {
+            opacity: 1;
+        }
+
+        /* Hover tint layered over an opaque fill, so the surface never turns see-through */
+        .tint-hover:hover {
+            background-image: linear-gradient(rgb(var(--c-accent) / 0.08), rgb(var(--c-accent) / 0.08));
+        }
+
+        .lift:hover {
+            translate: 0 -4px;
+            box-shadow: 0 28px 56px -28px rgb(var(--ink) / 0.5);
         }
     }
 
@@ -275,7 +394,7 @@ p {
         height: 1em;
         margin-left: 2px;
         vertical-align: -0.12em;
-        background: var(--signal);
+        background: rgb(var(--c-signal));
         animation: caret-blink 1s steps(1) infinite;
     }
 
@@ -285,7 +404,7 @@ p {
         width: 8px;
         height: 8px;
         border-radius: 999px;
-        background: var(--signal);
+        background: rgb(var(--c-signal));
     }
 
     .live-dot::after {
@@ -305,14 +424,14 @@ p {
 
     @keyframes live-ping {
         0% {
-            opacity: 0.55;
+            opacity: 0.7;
             transform: scale(1);
         }
 
         70%,
         100% {
             opacity: 0;
-            transform: scale(2.6);
+            transform: scale(3.2);
         }
     }
 }

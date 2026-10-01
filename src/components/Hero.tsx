@@ -35,11 +35,11 @@ export function Hero() {
   return (
     <header ref={headerRef} className="p-3 md:p-6 min-h-[100svh] flex flex-col">
       <div className="flex-1 accent-pattern rounded-[28px] md:rounded-[80px] relative overflow-hidden flex flex-col justify-between p-6 md:p-16">
-        <div className="absolute inset-x-0 bottom-0 h-[45%] flex pointer-events-none" aria-hidden="true">
-          <Decoration className="h-full w-1/2" color="12 22 35" fade="bottom" intensity={0.26} />
-          <Decoration className="h-full w-1/2 -scale-x-100" color="12 22 35" fade="bottom" intensity={0.26} />
+        <div className="absolute inset-x-0 bottom-0 h-[62%] flex pointer-events-none" aria-hidden="true">
+          <Decoration className="h-full w-1/2" color="12 22 35" fade="bottom" intensity={0.5} />
+          <Decoration className="h-full w-1/2 -scale-x-100" color="12 22 35" fade="bottom" intensity={0.5} />
         </div>
-        <div className="relative z-20 text-bg-dark font-bold tracking-[0.22em] md:tracking-[0.5em] text-[11px] leading-relaxed md:text-sm uppercase text-center pt-2 md:pt-4 text-balance">
+        <div className="relative z-20 text-ink font-bold tracking-[0.22em] md:tracking-[0.5em] text-[11px] leading-relaxed md:text-sm uppercase text-center pt-2 md:pt-4 px-10 md:px-0 text-balance">
           <TypingText text="SOFTWARE ENGINEER | FULL STACK DEVELOPER | SOUND DESIGNER" />
         </div>
 
@@ -51,20 +51,20 @@ export function Hero() {
             zIndex: 5,
           }}
         >
-          <h1 className="text-[18vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap -translate-y-12">
+          <h1 className="text-[18vw] font-display leading-[0.7] text-ink/5 whitespace-nowrap -translate-y-12">
             <MorphingText text="OHEHA EBIBI" />
           </h1>
-          <h1 className="text-[18vw] font-display leading-[0.7] text-bg-dark whitespace-nowrap">
+          <h1 className="text-[18vw] font-display leading-[0.7] text-ink whitespace-nowrap">
             <MorphingText text="OHEHA EBIBI" />
           </h1>
-          <h1 className="text-[18vw] font-display leading-[0.7] text-bg-dark/5 whitespace-nowrap translate-y-12">
+          <h1 className="text-[18vw] font-display leading-[0.7] text-ink/5 whitespace-nowrap translate-y-12">
             <MorphingText text="OHEHA EBIBI" />
           </h1>
         </motion.div>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-all duration-300 z-[100]">
           <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80">
-            <div className="w-full h-full rounded-full overflow-hidden border-4 border-bg-dark/25 shadow-[0_24px_48px_-16px_rgb(12_22_35/0.55)]">
+            <div className="w-full h-full rounded-full overflow-hidden border-4 border-ink/25 shadow-[0_24px_48px_-16px_rgb(12_22_35/0.55)]">
               <img
                 src="/profile.png"
                 alt="Oheha Ebibi, Software Engineer and Full Stack Developer"
@@ -79,19 +79,19 @@ export function Hero() {
         </div>
 
         <div className="absolute left-1/2 -translate-x-1/2 bottom-6 md:bottom-12 lg:bottom-16 z-20">
-          <div className="flex gap-3 justify-center">
+          <div className="flex gap-1.5 md:gap-2 justify-center">
             <a
               href="https://github.com/elshaddaioheha"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 rounded-full border border-bg-dark/70 flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent hover:border-bg-dark press"
+              className="halo halo-card w-14 h-14 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] flex items-center justify-center text-ink hover:bg-ink hover:text-card press"
               aria-label="GitHub"
             >
               <Github size={20} />
             </a>
             <a
               href="mailto:elshaddaioheha@gmail.com"
-              className="w-11 h-11 rounded-full border border-bg-dark/70 flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent hover:border-bg-dark press"
+              className="halo halo-card w-14 h-14 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] flex items-center justify-center text-ink hover:bg-ink hover:text-card press"
               aria-label="Email"
             >
               <Mail size={20} />
@@ -100,7 +100,7 @@ export function Hero() {
               href="https://x.com/0hehaebib1"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 rounded-full border border-bg-dark/70 flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent hover:border-bg-dark press"
+              className="halo halo-card w-14 h-14 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] flex items-center justify-center text-ink hover:bg-ink hover:text-card press"
               aria-label="Twitter"
             >
               <Twitter size={20} />
@@ -109,7 +109,7 @@ export function Hero() {
               href="https://instagram.com/0hehaebib1"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 rounded-full border border-bg-dark/70 flex items-center justify-center text-bg-dark hover:bg-bg-dark hover:text-accent hover:border-bg-dark press"
+              className="halo halo-card w-14 h-14 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] flex items-center justify-center text-ink hover:bg-ink hover:text-card press"
               aria-label="Instagram"
             >
               <Instagram size={20} />

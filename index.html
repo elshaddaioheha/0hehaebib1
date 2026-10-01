@@ -7,6 +7,23 @@
   <link rel="apple-touch-icon" href="/profile.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0c1623" />
+  <meta name="color-scheme" content="dark light" />
+
+  <!--
+    Resolve the theme before first paint: an explicit choice saved by the toggle wins,
+    otherwise follow the OS setting. Keep the storage key and colours in sync with src/hooks/useTheme.ts.
+  -->
+  <script>
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem("theme"); } catch (e) {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+      document.querySelector('meta[name="theme-color"]').setAttribute("content", theme === "light" ? "#f1faee" : "#0c1623");
+    })();
+  </script>
 
   <!-- Primary Meta Tags -->
   <title>Oheha Ebibi | Software Engineer & Full Stack Developer</title>
@@ -95,6 +112,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;600;800&display=swap"
     rel="stylesheet">
   <style>
+    /* Page background before the stylesheet arrives, so neither theme flashes the other */
+    html { background-color: #0c1623; }
+    html[data-theme="light"] { background-color: #f1faee; }
+
     /* Visually hide fallback content for SEO so it doesn't flash before React loads */
     .seo-fallback {
       position: absolute;
@@ -110,7 +131,7 @@
   </style>
 </head>
 
-<body style="background-color: #0c1623; margin: 0; padding: 0;">
+<body style="margin: 0; padding: 0;">
   <div id="root">
     <div class="seo-fallback">
       <header>
