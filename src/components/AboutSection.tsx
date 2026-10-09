@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { skillCategories } from "../data/portfolioData";
+import { about, site } from "../data/site";
 import { useRevealInView } from "../hooks/useRevealInView";
 import { AnimatedHeading } from "./AnimatedHeading";
 
@@ -19,7 +20,7 @@ export function AboutSection() {
             <AnimatedHeading title="about" direction="left-to-right" className="text-[18vw] md:text-[12vw] leading-[0.9]" />
             <div className="mt-4 md:mt-8 label text-accent/60 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-signal" aria-hidden="true" />
-              <span>Nigeria / Remote</span>
+              <span>{site.locationLabel}</span>
             </div>
           </div>
 
@@ -28,19 +29,11 @@ export function AboutSection() {
               I engineer <span className="text-highlight">scalable JavaScript architectures</span> and{" "}
               <span className="text-highlight">blockchain integrations</span>.
             </p>
-            <p className="text-base md:text-lg text-fg/75 leading-relaxed max-w-[60ch] mb-0">
-              I specialize in building robust, high-performance ecosystems using React, Node.js, and
-              Express. Beyond standard web development, I have worked on blockchain development, specifically
-              integrating the Hedera Hashgraph SDK to build secure, decentralized applications.
-            </p>
-            <p className="text-base md:text-lg text-fg/75 leading-relaxed max-w-[60ch] mb-0">
-              My background in data analytics (Google and Telus AI) drives a commitment to data integrity and
-              system optimization. This analytical mindset balances my work as a sound designer.
-            </p>
-            <p className="text-base md:text-lg text-fg/75 leading-relaxed max-w-[60ch] mb-0">
-              A proactive engineer grounded in rigorous CS fundamentals from Harvard CS50, I continue evolving
-              through open source contributions and real-world product delivery.
-            </p>
+            {about.paragraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 24)} className="text-base md:text-lg text-fg/75 leading-relaxed max-w-[60ch] mb-0">
+                {paragraph}
+              </p>
+            ))}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-4">
               {skillCategories.map((cat) => (

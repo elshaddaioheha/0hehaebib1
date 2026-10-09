@@ -5,7 +5,7 @@ Software engineer & full-stack developer. I build high-concurrency products, res
 [![Portfolio](https://img.shields.io/badge/Portfolio-oheha.vercel.app-111827?style=for-the-badge&logo=vercel)](https://oheha.vercel.app)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/ojeka-ebibi)
 [![GitHub](https://img.shields.io/badge/GitHub-@elshaddaioheha-111827?style=for-the-badge&logo=github)](https://github.com/elshaddaioheha)
-[![Email](https://img.shields.io/badge/Email-hello%40oheha.dev-4338CA?style=for-the-badge&logo=minutemailer)](mailto:elshaddaioheha@gmail.com)
+[![Email](https://img.shields.io/badge/Email-info%40ohehaebibi.dev-4338CA?style=for-the-badge&logo=minutemailer)](mailto:info@ohehaebibi.dev)
 
 ## Skills
 

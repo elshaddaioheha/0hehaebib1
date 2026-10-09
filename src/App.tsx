@@ -4,6 +4,7 @@ import { AboutSection } from "./components/AboutSection";
 import { ContactSection } from "./components/ContactSection";
 import { ExperienceTimeline } from "./components/ExperienceTimeline";
 import { ExpertiseSection } from "./components/ExpertiseSection";
+import { FaqSection } from "./components/FaqSection";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
 import { Navigation } from "./components/Navigation";
@@ -25,6 +26,7 @@ export default function App() {
         <ExpertiseSection />
         <ExperienceTimeline />
         <WorksSection />
+        <FaqSection />
         <ContactSection />
         <Footer />
         <ThemeToggle />

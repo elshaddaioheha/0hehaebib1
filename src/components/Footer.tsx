@@ -11,9 +11,9 @@ export function Footer() {
         speed={0.7}
       />
       <div className="container relative text-center">
-        <h3 className="text-[22vw] font-display leading-none opacity-5 whitespace-nowrap overflow-hidden select-none pointer-events-none uppercase">
+        <div aria-hidden="true" className="text-[22vw] font-display leading-none opacity-5 whitespace-nowrap overflow-hidden select-none pointer-events-none uppercase">
           0HEHAEBIB1 • 0HEHAEBIB1
-        </h3>
+        </div>
       </div>
     </footer>
   );

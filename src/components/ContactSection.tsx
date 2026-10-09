@@ -1,22 +1,19 @@
 import type React from "react";
-import emailjs from "@emailjs/browser";
+import { track } from "@vercel/analytics";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Mail, Twitter } from "lucide-react";
 import { useState } from "react";
 import { useRevealInView } from "../hooks/useRevealInView";
+import { site } from "../data/site";
 import { AnimatedHeading } from "./AnimatedHeading";
 import { Decoration } from "./Decoration";
 
 export function ContactSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "", company: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
-
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -29,23 +26,19 @@ export function ContactSection() {
     setError(null);
 
     try {
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("Email is not configured. Add EmailJS env vars.");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error ?? "Failed to send message.");
       }
 
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: form.name,
-          reply_to: form.email,
-          message: form.message,
-        },
-        { publicKey }
-      );
-
       setStatus("success");
-      setForm({ name: "", email: "", message: "" });
+      track("lead_submitted", { channel: "contact_form" });
+      setForm({ name: "", email: "", message: "", company: "" });
     } catch (err) {
       const message = err instanceof Error ? err.message : "Failed to send message.";
       setError(message);
@@ -91,14 +84,26 @@ export function ContactSection() {
                       <Mail className="w-5 h-5 md:w-8 md:h-8" />
                     </div>
                     <a
-                      href="mailto:elshaddaioheha@gmail.com"
+                      href={`mailto:${site.email}`}
+                      onClick={() => track("email_click", { location: "contact" })}
                       className="link-underline hover:opacity-80 break-words min-w-0 py-2"
                     >
-                      elshaddaioheha@gmail.com
+                      {site.email}
                     </a>
                   </div>
 
                   <form className="grid gap-4" onSubmit={handleSubmit}>
+                    {/* Honeypot for spam bots; hidden from people and screen readers. */}
+                    <input
+                      type="text"
+                      name="company"
+                      value={form.company}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      className="hidden"
+                    />
                     <div className="grid gap-2">
                       <label className="label text-ink/75" htmlFor="name">
                         Name

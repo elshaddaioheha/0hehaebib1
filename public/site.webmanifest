@@ -1,0 +1,13 @@
+{
+  "name": "Oheha Ebibi — Full-Stack Developer",
+  "short_name": "Oheha Ebibi",
+  "description": "Remote full-stack engineer building React & Node.js web apps, APIs and Hedera blockchain features.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0c1623",
+  "theme_color": "#0c1623",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/profile.png", "sizes": "503x496", "type": "image/png" }
+  ]
+}

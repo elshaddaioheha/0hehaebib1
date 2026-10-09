@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Github, Instagram, Mail, Twitter } from "lucide-react";
+import { track } from "@vercel/analytics";
+import { ArrowUpRight, Github, Instagram, Mail, Twitter } from "lucide-react";
 import { useRef } from "react";
 import { useMorphingText } from "../hooks/useMorphingText";
+import { site } from "../data/site";
 import { useTypingText } from "../hooks/useTypingText";
 import { Decoration } from "./Decoration";
 
@@ -51,34 +53,49 @@ export function Hero() {
             zIndex: 5,
           }}
         >
-          <h1 className="text-[18vw] font-display leading-[0.7] text-ink/5 whitespace-nowrap -translate-y-12">
+          <div aria-hidden="true" className="text-[18vw] font-display leading-[0.7] text-ink/5 whitespace-nowrap -translate-y-12">
             <MorphingText text="OHEHA EBIBI" />
-          </h1>
+          </div>
+          {/* The scramble effect is decorative; crawlers and screen readers get the plain name and role */}
           <h1 className="text-[18vw] font-display leading-[0.7] text-ink whitespace-nowrap">
-            <MorphingText text="OHEHA EBIBI" />
+            <span className="sr-only">{`${site.name}, ${site.jobTitle}`}</span>
+            <span aria-hidden="true">
+              <MorphingText text="OHEHA EBIBI" />
+            </span>
           </h1>
-          <h1 className="text-[18vw] font-display leading-[0.7] text-ink/5 whitespace-nowrap translate-y-12">
+          <div aria-hidden="true" className="text-[18vw] font-display leading-[0.7] text-ink/5 whitespace-nowrap translate-y-12">
             <MorphingText text="OHEHA EBIBI" />
-          </h1>
+          </div>
         </motion.div>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-all duration-300 z-[100]">
           <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80">
             <div className="w-full h-full rounded-full overflow-hidden border-4 border-ink/25 shadow-[0_24px_48px_-16px_rgb(12_22_35/0.55)]">
-              <img
-                src="/profile.png"
-                alt="Oheha Ebibi, Software Engineer and Full Stack Developer"
-                width={503}
-                height={496}
-                fetchPriority="high"
-                decoding="async"
-                className="w-full h-full object-cover"
-              />
+              <picture>
+                <source srcSet="/profile.webp" type="image/webp" />
+                <img
+                  src="/profile.png"
+                  alt="Oheha Ebibi, Software Engineer and Full Stack Developer"
+                  width={503}
+                  height={496}
+                  // React 18 only passes the lowercase attribute through to the DOM
+                  {...{ fetchpriority: "high" }}
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+              </picture>
             </div>
           </div>
         </div>
 
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-6 md:bottom-12 lg:bottom-16 z-20">
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-6 md:bottom-12 lg:bottom-16 z-20 flex flex-col items-center gap-2">
+          <a
+            href="#contact"
+            onClick={() => track("cta_click", { location: "hero" })}
+            className="btn-pill btn-solid halo halo-card bg-ink text-card whitespace-nowrap"
+          >
+            Start a project <ArrowUpRight size={18} />
+          </a>
           <div className="flex gap-1.5 md:gap-2 justify-center">
             <a
               href="https://github.com/elshaddaioheha"
@@ -90,7 +107,7 @@ export function Hero() {
               <Github size={20} />
             </a>
             <a
-              href="mailto:elshaddaioheha@gmail.com"
+              href={`mailto:${site.email}`}
               className="halo halo-card w-14 h-14 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] flex items-center justify-center text-ink hover:bg-ink hover:text-card press"
               aria-label="Email"
             >

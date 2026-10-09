@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/profile.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0c1623" />
   <meta name="color-scheme" content="dark light" />
@@ -25,87 +26,14 @@
     })();
   </script>
 
-  <!-- Primary Meta Tags -->
-  <title>Oheha Ebibi | Software Engineer & Full Stack Developer</title>
-  <meta name="description"
-    content="Software Engineer based in Nigeria (Remote). Specializing in Node.js architecture, React, and blockchain development on the Hedera ecosystem.">
-  <meta name="keywords"
-    content="Software Engineer, Oheha Ebibi, Full Stack Developer, Node.js, React, Express, Supabase, Firebase, MongoDB, Docker, Hedera SDK, Sound Designer, MERN Stack, ghost writing, technical writing, academic research projects, custom academic code, computer science tutor, CS thesis helper">
-  <meta name="author" content="Oheha Ebibi">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://oheha.vercel.app/">
+  <!-- Title, description, canonical, rel=me and social cards: generated from src/data/site.ts (vite.config.ts) -->
+  <!-- seo:meta -->
 
-  <!-- Open Graph / Facebook / LinkedIn -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Oheha Ebibi">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:url" content="https://oheha.vercel.app/">
-  <meta property="og:title" content="Oheha Ebibi | Software Engineer & Full-Stack Developer">
-  <meta property="og:description"
-    content="Building scalable digital infrastructure with React, Node.js, and Hedera blockchain integrations. Also providing specialized ghost writing and technical academic project consultancy.">
-  <meta property="og:image" content="https://oheha.vercel.app/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:alt" content="Oheha Ebibi — Software Engineer, Full-Stack Developer working in React, Node.js, Express and the Hedera SDK">
+  <!-- Structured data (ProfilePage, Person + services, projects, FAQ): generated from src/data -->
+  <!-- seo:jsonld -->
 
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@0hehaebib1">
-  <meta name="twitter:creator" content="@0hehaebib1">
-  <meta name="twitter:url" content="https://oheha.vercel.app/">
-  <meta name="twitter:title" content="Oheha Ebibi | Software Engineer & Full-Stack Developer">
-  <meta name="twitter:description"
-    content="Building scalable digital infrastructure with React, Node.js, and Hedera blockchain integrations. Also providing specialized ghost writing and technical academic project consultancy.">
-  <meta name="twitter:image" content="https://oheha.vercel.app/og-image.png">
-  <meta name="twitter:image:alt" content="Oheha Ebibi — Software Engineer, Full-Stack Developer working in React, Node.js, Express and the Hedera SDK">
-
-  <!-- Structured data: who this site is about -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Oheha Ebibi",
-    "url": "https://oheha.vercel.app/",
-    "image": "https://oheha.vercel.app/profile.png",
-    "jobTitle": "Software Engineer",
-    "email": "mailto:elshaddaioheha@gmail.com",
-    "description": "Software Engineer with over 4 years of experience building scalable full-stack applications with React, Node.js and Express, including Hedera blockchain development.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "NG"
-    },
-    "knowsAbout": [
-      "JavaScript",
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "Supabase",
-      "Firebase",
-      "MongoDB",
-      "Docker",
-      "Hedera SDK"
-    ],
-    "sameAs": [
-      "https://github.com/elshaddaioheha",
-      "https://x.com/0hehaebib1",
-      "https://instagram.com/0hehaebib1"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Oheha Ebibi",
-    "url": "https://oheha.vercel.app/",
-    "inLanguage": "en",
-    "author": {
-      "@type": "Person",
-      "name": "Oheha Ebibi"
-    }
-  }
-  </script>
+  <!-- The hero portrait is the largest paint on first load; fetch it alongside the HTML -->
+  <link rel="preload" as="image" href="/profile.webp" type="image/webp" fetchpriority="high" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,7 +44,7 @@
     html { background-color: #0c1623; }
     html[data-theme="light"] { background-color: #f1faee; }
 
-    /* Visually hide fallback content for SEO so it doesn't flash before React loads */
+    /* The crawler copy of the page is visually hidden; React replaces it on mount */
     .seo-fallback {
       position: absolute;
       width: 1px;
@@ -129,31 +57,18 @@
       border: 0;
     }
   </style>
+  <noscript>
+    <style>
+      /* Without JavaScript, show the content instead of an empty page */
+      .seo-fallback { position: static; width: auto; height: auto; margin: 0 auto; padding: 2rem 1.25rem; max-width: 70ch; overflow: visible; clip: auto; white-space: normal; color: #f1faee; font-family: system-ui, sans-serif; line-height: 1.6; }
+      .seo-fallback a { color: #a8dadc; }
+    </style>
+  </noscript>
 </head>
 
 <body style="margin: 0; padding: 0;">
   <div id="root">
-    <div class="seo-fallback">
-      <header>
-        <h1>Oheha Ebibi</h1>
-        <p>Software Engineer | Full Stack Developer | Sound Designer</p>
-      </header>
-      <main>
-        <section id="about-fallback">
-          <h2>About Me</h2>
-          <p>Versatile and technically rigorous Software Engineer with over 4 years of experience. Specialist in building
-            scalable full-stack applications using React, Node.js, Express, and databases like Supabase, Firebase, and MongoDB, with experience in Hedera blockchain development. I also provide professional ghost writing and technical academic project consulting, assisting computer science students with structured research papers and robust custom codebase builds.</p>
-        </section>
-        <section id="projects-fallback">
-          <h2>Projects</h2>
-          <ul>
-            <li>Diamond Dreams Group - Integrated Business & Event Platform</li>
-            <li>SwenAutos - Blockchain-Backed Automotive Marketplace</li>
-            <li>Agbejo - P2P Token Swap & Escrow Platform</li>
-          </ul>
-        </section>
-      </main>
-    </div>
+    <!-- seo:content -->
   </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
