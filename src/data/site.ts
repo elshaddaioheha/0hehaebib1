@@ -29,9 +29,9 @@ export const site = {
 } as const;
 
 export const about = {
-  lead: "I engineer scalable JavaScript architectures and blockchain integrations.",
+  lead: "I build full-stack web products with React, Next.js and Node.js, and mobile apps with React Native.",
   paragraphs: [
-    "I specialize in building robust, high-performance ecosystems using React, Node.js, and Express. Beyond standard web development, I have worked on blockchain development, specifically integrating the Hedera Hashgraph SDK to build secure, decentralized applications.",
+    "My core stack is TypeScript, React and Tailwind CSS on the frontend and Node.js on the backend, brought together in Next.js. I use React Native when a product needs to be on phones too. I'm currently building Exergy Intelligence, a cost intelligence platform for fleets and importers, and learning Go for distributed systems.",
     "My background in data analytics (Google and Telus AI) drives a commitment to data integrity and system optimization. This analytical mindset balances my work as a sound designer.",
     "A proactive engineer grounded in rigorous CS fundamentals from Harvard CS50, I continue evolving through open source contributions and real-world product delivery.",
   ],
@@ -61,7 +61,7 @@ export const faqs = [
   },
   {
     q: "What kind of projects can you build?",
-    a: "Business websites, landing pages, portfolios and full-stack web applications with React or Next.js frontends and Node.js/Express backends, REST and real-time APIs, payment flows with Paystack, databases on MongoDB, Supabase and Firebase, Dockerised deployments, and blockchain features with the Hedera SDK and Solidity.",
+    a: "Business websites, landing pages, portfolios and full-stack web applications with React or Next.js frontends styled in Tailwind CSS and Node.js/Express backends, REST and real-time APIs, payment flows with Paystack, databases on MongoDB, Supabase and Firebase, Dockerised deployments, and cross-platform mobile apps with React Native.",
   },
   {
     q: "Can you turn my Figma designs into a working website?",

@@ -24,7 +24,7 @@ import urllib.request
 EYEBROW = "SOFTWARE ENGINEER"
 NAME = "OHEHA EBIBI"
 SUBTITLE = "Full-Stack Developer"
-STACK = "React  \u00b7  Node.js  \u00b7  Express  \u00b7  Hedera SDK"
+STACK = "React  \u00b7  Next.js  \u00b7  Tailwind  \u00b7  Node.js"
 URL = "oheha.vercel.app"
 
 # --- brand, mirroring tailwind.config.js ----------------------------------

@@ -18,7 +18,7 @@ const id = (fragment: string) => `${site.url}#${fragment}`;
 /** Title, description, canonical, identity links and social-card tags for <head>. */
 export function renderHeadMeta(): string {
   const shareTitle = `${site.name} — Web Developer for Hire`;
-  const imageAlt = `${site.name}, ${site.jobTitle} working in React, Node.js, Express and the Hedera SDK`;
+  const imageAlt = `${site.name}, ${site.jobTitle} working in React, Next.js, Tailwind CSS and Node.js`;
   const xHandle = "@" + new URL(site.socials.find((s) => s.href.includes("x.com"))?.href ?? "https://x.com/").pathname.slice(1);
   return [
     `<title>${esc(site.title)}</title>`,

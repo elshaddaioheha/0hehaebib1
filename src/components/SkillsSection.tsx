@@ -7,25 +7,34 @@ import {
   ExpressIcon,
   FigmaIcon,
   FirebaseIcon,
-  HederaIcon,
+  GoIcon,
   JavaScriptIcon,
   MongoDbIcon,
+  NextIcon,
   NodeIcon,
   ReactIcon,
+  RedisIcon,
   SupabaseIcon,
+  TailwindIcon,
+  TypeScriptIcon,
 } from "./TechIcons";
 
 const skills = [
+  { label: "TypeScript", Icon: TypeScriptIcon },
   { label: "JavaScript", Icon: JavaScriptIcon },
   { label: "React.js", Icon: ReactIcon },
-  { label: "Figma", Icon: FigmaIcon },
+  { label: "Next.js", Icon: NextIcon },
+  { label: "Tailwind CSS", Icon: TailwindIcon },
   { label: "Node.js", Icon: NodeIcon },
   { label: "Express", Icon: ExpressIcon },
+  { label: "React Native", Icon: ReactIcon },
+  { label: "MongoDB", Icon: MongoDbIcon },
   { label: "Supabase", Icon: SupabaseIcon },
   { label: "Firebase", Icon: FirebaseIcon },
-  { label: "MongoDB", Icon: MongoDbIcon },
+  { label: "Redis", Icon: RedisIcon },
   { label: "Docker", Icon: DockerIcon },
-  { label: "Hedera SDK", Icon: HederaIcon },
+  { label: "Figma", Icon: FigmaIcon },
+  { label: "Go (learning)", Icon: GoIcon },
 ] as const;
 
 export function SkillsSection() {
@@ -52,7 +61,7 @@ export function SkillsSection() {
               <AnimatedHeading title="skills" direction="right-to-left" className="text-[18vw] md:text-[10vw] leading-[0.9]" />
             </div>
             <p className="max-w-xl text-accent/70 text-base md:text-lg mb-0">
-              Core software engineering stack: developing scalable frontend applications, robust backend services, multi-database management, containerized deployments, and blockchain integrations.
+              My everyday stack: React, Tailwind CSS and Next.js on the frontend, Node.js on the backend, React Native for mobile, and Docker to ship it. Currently learning Go for distributed systems.
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 md:gap-4">

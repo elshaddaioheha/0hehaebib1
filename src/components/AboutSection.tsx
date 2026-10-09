@@ -26,8 +26,8 @@ export function AboutSection() {
 
           <div className="md:w-2/3 flex flex-col gap-6 md:gap-8 md:pl-20">
             <p className="text-2xl md:text-3xl text-fg leading-[1.25] font-medium max-w-[55ch] mb-0">
-              I engineer <span className="text-highlight">scalable JavaScript architectures</span> and{" "}
-              <span className="text-highlight">blockchain integrations</span>.
+              I build <span className="text-highlight">full-stack web products</span> with React, Next.js and Node.js,
+              and <span className="text-highlight">mobile apps</span> with React Native.
             </p>
             {about.paragraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 24)} className="text-base md:text-lg text-fg/75 leading-relaxed max-w-[60ch] mb-0">

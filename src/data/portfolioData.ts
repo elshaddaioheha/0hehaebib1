@@ -25,38 +25,29 @@ export const socialLinks: SocialLink[] = [
 
 export const skillCategories = [
   {
-    category: "Frontend & Core",
-    skills: ["JavaScript", "React.js", "Figma"],
+    category: "Frontend",
+    skills: ["TypeScript", "JavaScript", "React.js", "Next.js", "Tailwind CSS", "TanStack Query", "Figma"],
   },
   {
     category: "Backend & APIs",
-    skills: ["Node.js", "Express.js"],
+    skills: ["Node.js", "Express.js", "Fastify", "REST APIs", "Zod"],
   },
   {
-    category: "Databases",
-    skills: ["Supabase", "Firebase", "MongoDB"],
+    category: "Mobile",
+    skills: ["React Native"],
   },
   {
-    category: "DevOps & Blockchain",
-    skills: ["Docker", "Hedera SDK"],
+    category: "Data & Queues",
+    skills: ["MongoDB", "Supabase", "Firebase", "Redis", "BullMQ"],
   },
-] as const;
-
-// Backward compatible lists if needed
-export const coreSkills = [
-  "JavaScript",
-  "React.js",
-  "Figma",
-  "Node.js",
-  "Express.js",
-] as const;
-
-export const web3Skills = [
-  "Supabase",
-  "Firebase",
-  "MongoDB",
-  "Docker",
-  "Hedera SDK",
+  {
+    category: "DevOps & Testing",
+    skills: ["Docker", "Vercel", "GitHub Actions", "Vitest"],
+  },
+  {
+    category: "Currently learning",
+    skills: ["Go (distributed systems)"],
+  },
 ] as const;
 
 export const expertiseItems: ExpertiseItem[] = [
@@ -69,8 +60,8 @@ export const expertiseItems: ExpertiseItem[] = [
     desc: "Revamping outdated or slow websites: a modern redesign, faster load times, better Core Web Vitals and search rankings, and a migration to React or Next.js without losing existing content or traffic.",
   },
   {
-    title: "Full-Stack JavaScript Engineering",
-    desc: "Architecting end-to-end applications using React for responsive frontends and Node.js/Express for robust, scalable backend services.",
+    title: "Full-Stack Web Engineering",
+    desc: "Building end-to-end products in TypeScript: React and Next.js frontends styled with Tailwind CSS, backed by Node.js APIs on Express or Fastify, with background workers and queues where the work needs them.",
   },
   {
     title: "UI Design & Figma Integration",
@@ -81,8 +72,8 @@ export const expertiseItems: ExpertiseItem[] = [
     desc: "Designing and optimizing data storage systems across Supabase, Firebase, and MongoDB, ensuring robust data integrity and efficient queries.",
   },
   {
-    title: "Blockchain Integration",
-    desc: "Building specialized blockchain features and ledger integrations utilizing the Hedera Hashgraph SDK in JavaScript/TypeScript environments.",
+    title: "Mobile App Development",
+    desc: "Building cross-platform iOS and Android apps with React Native, sharing types, validation and API clients with the web app so both stay in step.",
   },
   {
     title: "Containerization & DevOps",
@@ -107,6 +98,18 @@ export const expertiseItems: ExpertiseItem[] = [
 ];
 
 export const experiences: ExperienceItem[] = [
+  {
+    company: "Exergy Intelligence",
+    role: "Founder & Lead Engineer",
+    period: "Sep 2026 - Present",
+    location: "Lagos, Nigeria",
+    desc: "Building a cost intelligence platform for Nigerian fleets and importers: fuel benchmarks by state, corridor trip costing and landed cost. In active development.",
+    highlights: [
+      "Designed a TypeScript monorepo: a Next.js web app, a Fastify REST API with OpenAPI docs, and BullMQ workers on Redis, sharing types and Zod validation.",
+      "Every figure is labelled observed, estimated or forecast, with a confidence score, so users know how far to trust it.",
+      "Multi-tenant data layer with organisation isolation and role-based access for owners, fleet managers, procurement and analysts.",
+    ],
+  },
   {
     company: "Bolojar Technologies",
     role: "Software Engineer (Full-time)",
@@ -148,11 +151,11 @@ export const experiences: ExperienceItem[] = [
     role: "Software Engineer (Part-time)",
     period: "Jan 2025 - Present",
     location: "Remote",
-    desc: "Delivering MERN stack applications, Dockerizing environments, and writing Hedera-backed smart contracts.",
+    desc: "Delivering React, Next.js and Node.js applications for clients, from marketing sites to payment platforms.",
     highlights: [
-      "Shipped production MERN and blockchain applications with containerized pipelines for clients.",
-      "Implemented blockchain integrations using Hedera SDK for secure, decentralized escrow and transaction flows.",
-      "Delivered performance-focused React frontends with Tailwind and TypeScript.",
+      "Delivered performance-focused React and Next.js frontends with Tailwind CSS and TypeScript.",
+      "Shipped Node.js/Express backends and Dockerized environments with repeatable deploys.",
+      "Built escrow and verification features for marketplace clients, including Hedera-based integrations.",
     ],
   },
   {
@@ -170,6 +173,21 @@ export const experiences: ExperienceItem[] = [
 ];
 
 export const projects: ProjectItem[] = [
+  {
+    year: "2026",
+    title: "Exergy Intelligence (in progress)",
+    desc: "My startup: cost intelligence for moving goods in volatile markets. Diesel benchmarks by state, corridor trip costing and landed cost for Nigerian fleets and importers, tracking currency, fuel and freight volatility.",
+    featured: true,
+    category: "fullstack",
+    link: "https://exergyintelligence.tech",
+    techStack: ["Next.js", "TypeScript", "Tailwind", "Fastify", "MongoDB", "Redis", "BullMQ", "Docker"],
+    achievements: [
+      "Prices a corridor trip such as Lagos to Kano leg by leg at the state where the truck refuels, then adds driver, toll and maintenance costs.",
+      "Breaks landed cost into components and models how naira, diesel and freight moves change duty, VAT and margin.",
+      "API first: a documented REST API powers the app, so corridor and landed costs can flow straight into an ERP or TMS.",
+    ],
+    media: { src: "/exergy.webp", alt: "Exergy Intelligence landing page", width: 1200, height: 630 },
+  },
   {
     year: "2026",
     title: "distriQ (Distributed Job Queue)",
@@ -273,6 +291,7 @@ export const projects: ProjectItem[] = [
 ];
 
 export const galleryItems: GalleryItem[] = [
+  { name: "Exergy Intelligence", src: "/exergy.webp", alt: "Exergy Intelligence landing page", width: 1200, height: 630 },
   { name: "SwenAutos", src: "/gallery-swenautos.png", alt: "SwenAutos Platform", width: 1024, height: 573 },
   { name: "SwenAutos (demo)", src: "/swen-autos.webp", alt: "SwenAutos live demo", width: 1280, height: 628 },
   { name: "Agbejo", src: "/gallery-agbejo.png", alt: "Agbejo Escrow", width: 1024, height: 489 },

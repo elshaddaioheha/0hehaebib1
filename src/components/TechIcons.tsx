@@ -233,25 +233,59 @@ export function DockerIcon({ size = 24, className, ...props }: IconProps) {
   );
 }
 
-// 9. Hedera Logo (Official H Circle)
-export function HederaIcon({ size = 24, className, ...props }: IconProps) {
+// 9. TypeScript Logo (TS on blue square)
+export function TypeScriptIcon({ size = 24, className, ...props }: IconProps) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <circle cx="12" cy="12" r="10" stroke="#FFFFFF" strokeWidth="1.8" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect width="24" height="24" rx="4" fill="#3178C6" />
+      <text x="20" y="19.5" textAnchor="end" fontFamily="Arial, Helvetica, sans-serif" fontWeight="700" fontSize="11" fill="#FFFFFF">
+        TS
+      </text>
+    </svg>
+  );
+}
+
+// 11. Next.js Logo (N in a circle)
+export function NextIcon({ size = 24, className, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg" {...props}>
+      <circle cx="12" cy="12" r="11" fill="#000000" stroke="#FFFFFF" strokeOpacity="0.35" />
+      <path d="M8.5 16.5v-9l8 10.5" stroke="#FFFFFF" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M15.5 7.5v5.5" stroke="#FFFFFF" strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// 12. Tailwind CSS Logo (Double wave)
+export function TailwindIcon({ size = 24, className, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
-        d="M8.5 7v10M15.5 7v10M8.5 11h7M8.5 13h7"
-        stroke="#FFFFFF"
-        strokeWidth="1.8"
-        strokeLinecap="round"
+        d="M12 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12 4.8zM6 12c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.665 17.818 9.026 19.2 12 19.2c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6 12z"
+        fill="#38BDF8"
       />
+    </svg>
+  );
+}
+
+// 13. Redis Logo (Stacked layers)
+export function RedisIcon({ size = 24, className, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M12 3 22 7.5 12 12 2 7.5z" fill="#FF4438" />
+      <path d="M2 11.5 12 16l10-4.5" stroke="#FF4438" strokeWidth="2" strokeLinejoin="round" />
+      <path d="M2 15.5 12 20l10-4.5" stroke="#FF4438" strokeWidth="2" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// 14. Go Logo (GO wordmark)
+export function GoIcon({ size = 24, className, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg" {...props}>
+      <text x="12" y="16.5" textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontStyle="italic" fontWeight="800" fontSize="12" fill="#00ADD8">
+        GO
+      </text>
     </svg>
   );
 }
