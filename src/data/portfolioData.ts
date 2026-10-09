@@ -97,6 +97,10 @@ export const expertiseItems: ExpertiseItem[] = [
     desc: "Ghostwriting blog posts, website copy, case studies, documentation and LinkedIn articles under your name, written by an engineer so the technical details are accurate and the tone still sounds like you.",
   },
   {
+    title: "Academic Writing & Editing",
+    desc: "Academic ghostwriting and editing support for researchers, lecturers and professionals: journal articles, book chapters, conference papers, grant proposals and literature reviews, plus proofreading, restructuring and APA, MLA or Harvard referencing.",
+  },
+  {
     title: "Sound Design",
     desc: "Applying technical audio engineering skills to create immersive soundscapes and ambient tracks using FL Studio.",
   },

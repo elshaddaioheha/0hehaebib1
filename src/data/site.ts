@@ -52,6 +52,10 @@ export const faqs = [
     a: "Yes. I ghostwrite blog posts, website copy, case studies, technical documentation and LinkedIn articles that are published under your name. Because I'm an engineer, technical topics come out accurate, and every piece is written to match your voice.",
   },
   {
+    q: "Do you offer academic ghostwriting?",
+    a: "Yes, for researchers, lecturers and professionals. I draft and edit journal articles, book chapters, conference papers, grant proposals and literature reviews, and handle proofreading and APA, MLA or Harvard referencing. I don't write coursework, essays or theses for students to submit as their own, but I can edit and proofread work you have written.",
+  },
+  {
     q: "Do you work with clients outside Nigeria?",
     a: `Yes. I work remotely and already collaborate with distributed teams. I'm based in Nigeria (${site.timezone}), which overlaps comfortably with European working hours and part of the US day.`,
   },
