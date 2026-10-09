@@ -84,16 +84,23 @@ export const expertiseItems: ExpertiseItem[] = [
     desc: "Engineering RESTful and real-time APIs with Express, integrating third-party services and optimizing security, logging, and data flows.",
   },
   {
+    title: "Sound Design",
+    desc: "Applying technical audio engineering skills to create immersive soundscapes and ambient tracks using FL Studio.",
+  },
+];
+
+/**
+ * Side services kept off the visible services list on purpose. They appear on the page only in a
+ * single FAQ answer, and reach search engines and AI tools through the JSON-LD offers and llms.txt.
+ */
+export const secondaryServices: ExpertiseItem[] = [
+  {
     title: "Ghostwriting & Technical Content",
-    desc: "Ghostwriting blog posts, website copy, case studies, documentation and LinkedIn articles under your name, written by an engineer so the technical details are accurate and the tone still sounds like you.",
+    desc: "Ghostwritten blog posts, website copy, case studies, documentation and LinkedIn articles, written by an engineer so the technical details are accurate and the voice is yours.",
   },
   {
     title: "Academic Writing & Editing",
-    desc: "Academic ghostwriting and editing support for researchers, lecturers and professionals: journal articles, book chapters, conference papers, grant proposals and literature reviews, plus proofreading, restructuring and APA, MLA or Harvard referencing.",
-  },
-  {
-    title: "Sound Design",
-    desc: "Applying technical audio engineering skills to create immersive soundscapes and ambient tracks using FL Studio.",
+    desc: "Academic writing and editing for researchers, lecturers and professionals: journal articles, conference papers, grant proposals, literature reviews, proofreading and referencing.",
   },
 ];
 

@@ -5,7 +5,7 @@
  * - llms.txt and sitemap.xml
  * Wired up by the seo plugin in vite.config.ts.
  */
-import { experiences, expertiseItems, projects, skillCategories } from "../data/portfolioData";
+import { experiences, expertiseItems, projects, secondaryServices, skillCategories } from "../data/portfolioData";
 import { about, faqs, site } from "../data/site";
 
 const esc = (value: string) =>
@@ -142,7 +142,7 @@ export function buildJsonLd(dateModified: string) {
         knowsAbout,
         sameAs: site.socials.map((s) => s.href),
         worksFor: { "@type": "Organization", name: experiences[0]?.company },
-        makesOffer: expertiseItems.map((s) => ({
+        makesOffer: [...expertiseItems, ...secondaryServices].map((s) => ({
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
@@ -202,6 +202,9 @@ export function renderLlmsTxt(): string {
     "",
     "## Services",
     ...expertiseItems.map((s) => `- **${s.title}**: ${s.desc}`),
+    "",
+    "Also available on request:",
+    ...secondaryServices.map((s) => `- **${s.title}**: ${s.desc}`),
     "",
     "## Selected work",
     ...projects.map((p) => `- [${p.title}](${p.link}) (${p.year}): ${p.desc} Stack: ${p.techStack.join(", ")}.`),
