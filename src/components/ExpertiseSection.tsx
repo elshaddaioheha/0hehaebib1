@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { expertiseItems } from "../data/portfolioData";
 import { useRevealInView } from "../hooks/useRevealInView";
 import { AnimatedHeading } from "./AnimatedHeading";
+import { SectionMark } from "./SectionMark";
 
 export function ExpertiseSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
@@ -14,6 +15,7 @@ export function ExpertiseSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
+          <SectionMark index="03" kicker="Practice" className="md:justify-end" />
           <AnimatedHeading
             title="expertise"
             direction="left-to-right"
@@ -23,10 +25,10 @@ export function ExpertiseSection() {
             {expertiseItems.map((item, i) => (
               <motion.li
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true, margin: "0px" }}
+                transition={{ duration: 0.28, delay: Math.min(i, 3) * 0.03, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative spotlight grid grid-cols-[2.25rem_1fr] md:grid-cols-[5rem_minmax(0,24rem)_1fr] gap-x-3 md:gap-x-10 gap-y-2 py-6 md:py-8 border-b border-accent/10 transition-colors duration-200 hover:bg-accent/[0.03] before:content-[''] before:absolute before:left-0 before:top-6 before:bottom-6 before:w-0.5 before:bg-signal before:origin-top before:scale-y-0 before:transition-transform before:duration-300 hover:before:scale-y-100"
               >
                 <span className="label text-signal tabular-nums pt-1.5 md:pl-4 transition-transform duration-300 group-hover:translate-x-1">

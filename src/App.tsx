@@ -7,11 +7,24 @@ import { ExpertiseSection } from "./components/ExpertiseSection";
 import { FaqSection } from "./components/FaqSection";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
+import { Marquee } from "./components/Marquee";
 import { Navigation } from "./components/Navigation";
+import { ScrollProgress } from "./components/ScrollProgress";
 import { SkillsSection } from "./components/SkillsSection";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { WorksSection } from "./components/WorksSection";
 import { useSpotlight } from "./hooks/useSpotlight";
+
+const ticker = [
+  "Available for work",
+  "Full-stack",
+  "React",
+  "Next.js",
+  "Node.js",
+  "React Native",
+  "Sound design",
+  "Lagos",
+] as const;
 
 export default function App() {
   useSpotlight();
@@ -19,7 +32,13 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="bg-bg-dark min-h-screen text-accent">
+        <ScrollProgress />
         <Hero />
+        <Marquee
+          items={ticker}
+          className="border-y border-accent/10 bg-bg-dark"
+          itemClassName="label text-accent/70"
+        />
         <Navigation />
         <AboutSection />
         <SkillsSection />

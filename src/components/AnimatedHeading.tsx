@@ -1,5 +1,7 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 interface AnimatedHeadingProps {
   title: string;
@@ -15,6 +17,7 @@ export function AnimatedHeading({
   tag = "h2",
 }: AnimatedHeadingProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "0px 0px -8% 0px" });
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" ? window.innerWidth < 768 : false);
 
   useEffect(() => {
@@ -29,11 +32,11 @@ export function AnimatedHeading({
     offset: ["start end", "end start"],
   });
 
-  // Slide left-to-right or right-to-left based on scroll progress
+  // A short drift. The old ±60px range pushed display words out of narrow columns.
   const x = useTransform(
     scrollYProgress,
-    [0, 1],
-    direction === "left-to-right" ? [-60, 60] : [60, -60] // slightly smaller range for subheadings
+    [0.2, 0.8],
+    direction === "left-to-right" ? [-12, 12] : [12, -12],
   );
 
   // motion[tag] is a union of motion components; all accept the style/className we pass
@@ -41,12 +44,18 @@ export function AnimatedHeading({
 
   return (
     <div ref={containerRef} className="overflow-hidden select-none pointer-events-none w-full">
-      <MotionTag
-        style={isMobile ? {} : { x }}
-        className={`font-display ${className.includes("whitespace-") ? "" : "whitespace-nowrap"} ${className}`}
+      <motion.div
+        initial={{ y: "18%" }}
+        animate={isInView ? { y: "0%" } : { y: "18%" }}
+        transition={{ duration: 0.7, ease: EASE }}
       >
-        {title}
-      </MotionTag>
+        <MotionTag
+          style={isMobile ? {} : { x }}
+          className={`font-display ${className.includes("whitespace-") ? "" : "whitespace-nowrap"} ${className}`}
+        >
+          {title}
+        </MotionTag>
+      </motion.div>
     </div>
   );
 }

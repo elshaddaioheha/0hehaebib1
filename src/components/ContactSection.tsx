@@ -7,6 +7,8 @@ import { useRevealInView } from "../hooks/useRevealInView";
 import { site } from "../data/site";
 import { AnimatedHeading } from "./AnimatedHeading";
 import { Decoration } from "./Decoration";
+import { OrbitFrame } from "./OrbitFrame";
+import { SectionMark } from "./SectionMark";
 
 export function ContactSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
@@ -61,6 +63,7 @@ export function ContactSection() {
           <div className="relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-12 w-full overflow-hidden">
               <div className="w-full">
+                <SectionMark index="07" kicker="Start" tone="card" />
                 <AnimatedHeading
                   title="hire me"
                   direction="right-to-left"
@@ -177,7 +180,7 @@ export function ContactSection() {
                       GitHub
                     </a>
                     <a
-                      href="https://linkedin.com/in/ojeka-ebibi"
+                      href="https://linkedin.com/in/oheha-ebibi"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="halo halo-card inline-flex items-center gap-2 min-h-[56px] px-4 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.2)] text-ink font-bold text-sm md:text-base nudge press hover:bg-ink hover:text-card"
@@ -197,10 +200,12 @@ export function ContactSection() {
                   </div>
                 </div>
               </div>
-              <div className="hidden md:flex justify-end">
-                <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-ink/20 bg-ink">
-                  <img src="/profile.png" alt="Oheha Ebibi" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                </div>
+              <div className="hidden justify-end md:flex">
+                <OrbitFrame className="w-80">
+                  <div className="h-80 w-80 overflow-hidden rounded-full border-4 border-ink/20 bg-ink">
+                    <img src="/profile.png" alt="Oheha Ebibi" loading="lazy" decoding="async" className="h-full w-full object-cover object-center" />
+                  </div>
+                </OrbitFrame>
               </div>
             </div>
           </div>

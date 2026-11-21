@@ -3,6 +3,7 @@ import { Plus } from "lucide-react";
 import { faqs } from "../data/site";
 import { useRevealInView } from "../hooks/useRevealInView";
 import { AnimatedHeading } from "./AnimatedHeading";
+import { SectionMark } from "./SectionMark";
 
 /** Answers to what prospective clients ask before getting in touch. Mirrored as FAQPage structured data. */
 export function FaqSection() {
@@ -18,6 +19,7 @@ export function FaqSection() {
         >
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-16">
             <div className="flex-1 min-w-0">
+              <SectionMark index="06" kicker="Notes" />
               <AnimatedHeading title="faq" direction="left-to-right" className="text-[18vw] md:text-[12vw] leading-[0.9]" />
             </div>
             <p className="max-w-[400px] text-accent/60 font-medium leading-[1.5] mb-0">
@@ -42,9 +44,13 @@ export function FaqSection() {
                     <Plus size={18} />
                   </span>
                 </summary>
-                <p className="animate-fade-in pl-11 md:pl-[5.5rem] pr-4 md:pr-24 pb-6 md:pb-8 text-base md:text-lg text-accent/70 leading-relaxed max-w-4xl mb-0">
-                  {item.a}
-                </p>
+                <div className="faq-panel">
+                  <div>
+                    <p className="mb-0 max-w-4xl pb-6 pl-11 pr-4 text-base leading-relaxed text-accent/70 md:pb-8 md:pl-[5.5rem] md:pr-24 md:text-lg">
+                      {item.a}
+                    </p>
+                  </div>
+                </div>
               </details>
             ))}
           </div>

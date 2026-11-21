@@ -6,6 +6,16 @@ import { useMorphingText } from "../hooks/useMorphingText";
 import { site } from "../data/site";
 import { useTypingText } from "../hooks/useTypingText";
 import { Decoration } from "./Decoration";
+import { OrbitFrame } from "./OrbitFrame";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const socials = [
+  { href: "https://github.com/elshaddaioheha", label: "GitHub", Icon: Github },
+  { href: `mailto:${site.email}`, label: "Email", Icon: Mail },
+  { href: "https://x.com/0hehaebib1", label: "Twitter", Icon: Twitter },
+  { href: "https://instagram.com/0hehaebib1", label: "Instagram", Icon: Instagram },
+] as const;
 
 function MorphingText({ text }: { text: string }) {
   const morphText = useMorphingText(text);
@@ -68,9 +78,17 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-all duration-300 z-[100]">
-          <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80">
-            <div className="w-full h-full rounded-full overflow-hidden border-4 border-ink/25 shadow-[0_24px_48px_-16px_rgb(12_22_35/0.55)]">
+        <div className="pointer-events-none absolute inset-0 z-[100] grid place-items-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              scale: { type: "spring", stiffness: 460, damping: 34, mass: 0.55 },
+              opacity: { duration: 0.22, ease: EASE },
+            }}
+          >
+          <OrbitFrame className="w-48 md:w-64 lg:w-80">
+            <div className="h-48 w-48 overflow-hidden rounded-full border-4 border-ink/25 shadow-[0_24px_48px_-16px_rgb(12_22_35/0.55)] md:h-64 md:w-64 lg:h-80 lg:w-80">
               <picture>
                 <source srcSet="/profile.webp" type="image/webp" />
                 <img
@@ -81,58 +99,62 @@ export function Hero() {
                   // React 18 only passes the lowercase attribute through to the DOM
                   {...{ fetchpriority: "high" }}
                   decoding="async"
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover object-center"
                 />
               </picture>
             </div>
-          </div>
+          </OrbitFrame>
+          </motion.div>
         </div>
 
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-6 md:bottom-12 lg:bottom-16 z-20 flex flex-col items-center gap-2">
-          <a
+        <motion.div
+          className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 md:bottom-12 lg:bottom-16"
+          initial="hidden"
+          animate="show"
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.04, delayChildren: 0.12 } },
+          }}
+        >
+          <motion.a
             href="#contact"
             onClick={() => track("cta_click", { location: "hero" })}
-            className="btn-pill btn-solid halo halo-card bg-ink text-card whitespace-nowrap"
+            variants={{
+              hidden: { opacity: 0, y: 16 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
+            }}
+            className="btn-pill btn-solid halo halo-card whitespace-nowrap bg-ink text-card"
           >
             Start a project <ArrowUpRight size={18} />
-          </a>
-          <div className="flex gap-1.5 md:gap-2 justify-center">
-            <a
-              href="https://github.com/elshaddaioheha"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="halo halo-card w-14 h-14 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] flex items-center justify-center text-ink hover:bg-ink hover:text-card press"
-              aria-label="GitHub"
-            >
-              <Github size={20} />
-            </a>
-            <a
-              href={`mailto:${site.email}`}
-              className="halo halo-card w-14 h-14 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] flex items-center justify-center text-ink hover:bg-ink hover:text-card press"
-              aria-label="Email"
-            >
-              <Mail size={20} />
-            </a>
-            <a
-              href="https://x.com/0hehaebib1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="halo halo-card w-14 h-14 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] flex items-center justify-center text-ink hover:bg-ink hover:text-card press"
-              aria-label="Twitter"
-            >
-              <Twitter size={20} />
-            </a>
-            <a
-              href="https://instagram.com/0hehaebib1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="halo halo-card w-14 h-14 rounded-full bg-frosted_blue-700 shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] flex items-center justify-center text-ink hover:bg-ink hover:text-card press"
-              aria-label="Instagram"
-            >
-              <Instagram size={20} />
-            </a>
-          </div>
-        </div>
+          </motion.a>
+          <motion.div
+            className="flex justify-center gap-1.5 md:gap-2"
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.05 } },
+            }}
+          >
+            {socials.map(({ href, label, Icon }) => {
+              const external = !href.startsWith("mailto:");
+              return (
+              <motion.a
+                key={label}
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                variants={{
+                  hidden: { opacity: 0, y: 12 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE } },
+                }}
+                className="halo halo-card press flex h-14 w-14 items-center justify-center rounded-full bg-frosted_blue-700 text-ink shadow-[inset_0_0_0_1px_rgb(12_22_35/0.45)] hover:bg-ink hover:text-card"
+                aria-label={label}
+              >
+                <Icon size={20} />
+              </motion.a>
+              );
+            })}
+          </motion.div>
+        </motion.div>
       </div>
     </header>
   );
