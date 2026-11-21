@@ -3,6 +3,7 @@ import { useState } from "react";
 import { projects } from "../data/portfolioData";
 import { useRevealInView } from "../hooks/useRevealInView";
 import { AnimatedHeading } from "./AnimatedHeading";
+import { SectionMark } from "./SectionMark";
 import { Decoration } from "./Decoration";
 import { ProjectCard } from "./ProjectCard";
 
@@ -37,6 +38,7 @@ export function WorksSection() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="w-full md:w-auto">
+            <SectionMark index="05" kicker="Selected" />
             <AnimatedHeading title="works" direction="left-to-right" className="text-[18vw] md:text-[12vw] leading-[0.85]" />
             <div className="mt-6 md:mt-8 flex flex-wrap gap-1 md:gap-2">
               {filterOptions.map((opt) => {

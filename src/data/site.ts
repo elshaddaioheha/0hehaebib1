@@ -16,22 +16,22 @@ export const site = {
   tagline: "Software Engineer | Full Stack Developer | Sound Designer",
   email: "info@ohehaebibi.dev",
   country: "NG",
-  locationLabel: "Nigeria / Remote",
+  locationLabel: "Remote",
   timezone: "WAT, UTC+1",
   image: "https://oheha.vercel.app/profile.png",
   ogImage: "https://oheha.vercel.app/og-image.png",
   socials: [
     { label: "GitHub", href: "https://github.com/elshaddaioheha" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/ojeka-ebibi" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/oheha-ebibi" },
     { label: "X (Twitter)", href: "https://x.com/0hehaebib1" },
     { label: "Instagram", href: "https://instagram.com/0hehaebib1" },
   ],
 } as const;
 
 export const about = {
-  lead: "I build full-stack web products with React, Next.js and Node.js, and mobile apps with React Native.",
+  lead: "I build full-stack web products with React, Next.js and Node.js, APIs with Fastify and Django, and mobile apps with React Native.",
   paragraphs: [
-    "My core stack is TypeScript, React and Tailwind CSS on the frontend and Node.js on the backend, brought together in Next.js. I use React Native when a product needs to be on phones too. I'm currently building Exergy Intelligence, a cost intelligence platform for fleets and importers, and learning Go for distributed systems.",
+    "My core stack is TypeScript, React and Tailwind CSS on the frontend and Node.js on the backend, brought together in Next.js. I use React Native when a product needs to be on phones too. I'm currently building Exergy Intelligence, a cost intelligence platform for fleets and importers, learning Go for distributed systems, and leaning into site reliability engineering and cloud infrastructure.",
     "My background in data analytics (Google and Telus AI) drives a commitment to data integrity and system optimization. This analytical mindset balances my work as a sound designer.",
     "A proactive engineer grounded in rigorous CS fundamentals from Harvard CS50, I continue evolving through open source contributions and real-world product delivery.",
   ],

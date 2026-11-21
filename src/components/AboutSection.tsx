@@ -3,6 +3,7 @@ import { skillCategories } from "../data/portfolioData";
 import { about, site } from "../data/site";
 import { useRevealInView } from "../hooks/useRevealInView";
 import { AnimatedHeading } from "./AnimatedHeading";
+import { SectionMark } from "./SectionMark";
 
 export function AboutSection() {
   const { ref, isInView } = useRevealInView<HTMLElement>();
@@ -17,6 +18,7 @@ export function AboutSection() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="md:w-1/3">
+            <SectionMark index="01" kicker="Profile" />
             <AnimatedHeading title="about" direction="left-to-right" className="text-[18vw] md:text-[12vw] leading-[0.9]" />
             <div className="mt-4 md:mt-8 label text-accent/60 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-signal" aria-hidden="true" />
@@ -27,7 +29,7 @@ export function AboutSection() {
           <div className="md:w-2/3 flex flex-col gap-6 md:gap-8 md:pl-20">
             <p className="text-2xl md:text-3xl text-fg leading-[1.25] font-medium max-w-[55ch] mb-0">
               I build <span className="text-highlight">full-stack web products</span> with React, Next.js and Node.js,
-              and <span className="text-highlight">mobile apps</span> with React Native.
+              APIs with Fastify and Django, and <span className="text-highlight">mobile apps</span> with React Native.
             </p>
             {about.paragraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 24)} className="text-base md:text-lg text-fg/75 leading-relaxed max-w-[60ch] mb-0">

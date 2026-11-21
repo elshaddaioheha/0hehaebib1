@@ -30,7 +30,7 @@ export const skillCategories = [
   },
   {
     category: "Backend & APIs",
-    skills: ["Node.js", "Express.js", "Fastify", "REST APIs", "Zod"],
+    skills: ["Node.js", "Express.js", "Fastify", "FastAPI", "Django", "REST APIs", "Zod"],
   },
   {
     category: "Mobile",
@@ -38,7 +38,7 @@ export const skillCategories = [
   },
   {
     category: "Data & Queues",
-    skills: ["MongoDB", "Supabase", "Firebase", "Redis", "BullMQ"],
+    skills: ["MongoDB", "Supabase", "Firebase", "Redis", "BullMQ", "AWS"],
   },
   {
     category: "DevOps & Testing",
@@ -46,7 +46,7 @@ export const skillCategories = [
   },
   {
     category: "Currently learning",
-    skills: ["Go (distributed systems)"],
+    skills: ["Go (distributed systems)", "Site Reliability Engineering", "Cloud infrastructure"],
   },
 ] as const;
 
